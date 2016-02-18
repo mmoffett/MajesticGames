@@ -1,0 +1,64 @@
+body 
+{
+    font-family: Rockwell;
+    background-image: url("stary night.gif") ;
+}
+h1 
+{
+    color: #a67be5;
+    font-family: Rockwell;
+}
+h3
+{
+	color: #89CFE1;
+	font-family: Lucida Calligraphy;
+}
+p 
+{
+    color:#de4f82;
+    font-family: Rockwell;
+    
+}
+nav
+{
+	line-height:30px;
+    height:800px;
+    width:100px;
+    float:left;
+    padding:10px;
+}
+a:link 
+{
+    color: yellow;
+}
+a:visited 
+{
+    color: orange;
+}
+a:hover 
+{
+    color: red;
+}
+.header {
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+.section 
+{
+    width:350px;
+    float:left;
+    padding:10x;
+    position: relative;
+}
+.picture_prop
+{
+    padding:5px;
+    margin-left: 15%;
+    margin-right: auto;
+    margin: 0;
+    position: relative;
+    top: 50%;.
+    left: 21.5%; 
+}
+
