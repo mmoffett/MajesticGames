@@ -5,7 +5,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class EmptyFrameViewer {
+public class EmptyFrameViewer 
+{
     public static void main(String[] args) throws IOException 
     {
         String path = "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep.png";
@@ -22,7 +23,7 @@ public class EmptyFrameViewer {
         frame.getContentPane().setBackground(Color.black);
         
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        frame.setSize(900,900);
+        //frame.setSize(900,900);
         frame.setVisible(true);
         frame.setTitle("Majestic Games");
     }
