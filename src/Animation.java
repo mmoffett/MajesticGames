@@ -89,7 +89,7 @@ public class Animation
                 sheepB = ImageIO.read(file2);
                 sheep.add(sheepA);
                 sheep.add(sheepB);
-                Timer timer = new Timer(40, new ActionListener() 
+                Timer timer = new Timer(10, new ActionListener() 
                 {
                     /**
                      * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
@@ -100,13 +100,13 @@ public class Animation
                     public void actionPerformed(ActionEvent e)
                     {
                         xPos += direction;
-                        if (xPos + sheep.get(current).getWidth() > getWidth())
+                        if (xPos + sheep.get(current).getWidth() > getWidth()+(sheep.get(current).getWidth()/2))
                         {
-                            xPos = getWidth() - sheep.get(current).getWidth();
+                            xPos = getWidth() - sheep.get(current).getWidth()+(sheep.get(current).getWidth()/2);;
                             direction *= -1;
-                        } else if (xPos < 0)
+                        } else if (xPos < -(sheep.get(current).getWidth()/2))
                         {
-                            xPos = 0;
+                            xPos = -(sheep.get(current).getWidth()/2);
                             direction *= -1;
                         }
                         repaint();
