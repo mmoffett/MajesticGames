@@ -68,6 +68,7 @@ public class Animation
 		 * 
 		 */
 		private BufferedImage sheep;
+		private BufferedImage sheep2;
         private int xPos = 0;
         private int direction = 1;
         /**
@@ -78,8 +79,11 @@ public class Animation
             try 
             {
             	String path = "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep.png";
+            	String path2= "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep2.png";
                 File file = new File(path);
+                File file2 = new File(path2);
                 sheep = ImageIO.read(file);
+                sheep2 = ImageIO.read(file2);
                 Timer timer = new Timer(40, new ActionListener() 
                 {
                     /**
@@ -91,9 +95,9 @@ public class Animation
                     public void actionPerformed(ActionEvent e)
                     {
                         xPos += direction;
-                        if (xPos + sheep.getWidth() > getWidth())
+                        if (xPos + sheep2.getWidth() > getWidth())
                         {
-                            xPos = getWidth() - sheep.getWidth();
+                            xPos = getWidth() - sheep2.getWidth();
                             direction *= -1;
                         } else if (xPos < 0)
                         {
@@ -122,8 +126,8 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
-            int y = getHeight() - sheep.getHeight();
-            g.drawImage(sheep, xPos, y, this);
+            int y = getHeight() - sheep2.getHeight();
+            g.drawImage(sheep2, xPos, y, this);
 
         }
 
