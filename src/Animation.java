@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
-//import java.awt.Color;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -49,7 +49,6 @@ public class Animation
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
-               // frame.getContentPane().setBackground(Color.black);
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
 
@@ -122,7 +121,7 @@ public class Animation
         protected void paintComponent(Graphics g) 
         {
             super.paintComponent(g);
-
+            setBackground(Color.black);
             int y = getHeight() - sheep.getHeight();
             g.drawImage(sheep, xPos, y, this);
 
