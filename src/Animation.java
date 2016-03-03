@@ -81,15 +81,15 @@ public class Animation
         {
             try 
             {
-            	String path = "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep.png";
-            	String path2= "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep2.png";
+            	String path = "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep2a.png";
+            	String path2= "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep2b.png";
                 File file = new File(path);
                 File file2 = new File(path2);
                 sheepA = ImageIO.read(file);
                 sheepB = ImageIO.read(file2);
                 sheep.add(sheepA);
                 sheep.add(sheepB);
-                Timer timer = new Timer(10, new ActionListener() 
+                Timer timer = new Timer(2, new ActionListener() 
                 {
                     /**
                      * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
@@ -104,10 +104,12 @@ public class Animation
                         {
                             xPos = getWidth() - sheep.get(current).getWidth()+(sheep.get(current).getWidth()/2);;
                             direction *= -1;
+                            current=0;
                         } else if (xPos < -(sheep.get(current).getWidth()/2))
                         {
                             xPos = -(sheep.get(current).getWidth()/2);
                             direction *= -1;
+                            current=1;
                         }
                         repaint();
                     }
