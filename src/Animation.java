@@ -72,6 +72,7 @@ public class Animation
 		private BufferedImage sheepB;
         private int xPos = 0;
         private int direction = 1;
+        private int current = 1;
         Vector<BufferedImage> sheep =new Vector<BufferedImage>();
         /**
          * Constructor for objects of class AnimationPane
@@ -99,9 +100,9 @@ public class Animation
                     public void actionPerformed(ActionEvent e)
                     {
                         xPos += direction;
-                        if (xPos + sheep.get(1).getWidth() > getWidth())
+                        if (xPos + sheep.get(current).getWidth() > getWidth())
                         {
-                            xPos = getWidth() - sheep.get(1).getWidth();
+                            xPos = getWidth() - sheep.get(current).getWidth();
                             direction *= -1;
                         } else if (xPos < 0)
                         {
@@ -130,8 +131,8 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
-            int y = getHeight() - sheep.get(1).getHeight();
-            g.drawImage(sheep.get(1), xPos, y, this);
+            int y = getHeight() - sheep.get(current).getHeight();
+            g.drawImage(sheep.get(current), xPos, y, this);
 
         }
 
