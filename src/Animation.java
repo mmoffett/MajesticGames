@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.Vector;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -67,10 +68,11 @@ public class Animation
         /**
 		 * 
 		 */
-		private BufferedImage sheep;
-		private BufferedImage sheep2;
+		private BufferedImage sheepA;
+		private BufferedImage sheepB;
         private int xPos = 0;
         private int direction = 1;
+        Vector<BufferedImage> sheep =new Vector<BufferedImage>();
         /**
          * Constructor for objects of class AnimationPane
          */
@@ -82,8 +84,10 @@ public class Animation
             	String path2= "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep2.png";
                 File file = new File(path);
                 File file2 = new File(path2);
-                sheep = ImageIO.read(file);
-                sheep2 = ImageIO.read(file2);
+                sheepA = ImageIO.read(file);
+                sheepB = ImageIO.read(file2);
+                sheep.add(sheepA);
+                sheep.add(sheepB);
                 Timer timer = new Timer(40, new ActionListener() 
                 {
                     /**
@@ -95,9 +99,9 @@ public class Animation
                     public void actionPerformed(ActionEvent e)
                     {
                         xPos += direction;
-                        if (xPos + sheep2.getWidth() > getWidth())
+                        if (xPos + sheep.get(1).getWidth() > getWidth())
                         {
-                            xPos = getWidth() - sheep2.getWidth();
+                            xPos = getWidth() - sheep.get(1).getWidth();
                             direction *= -1;
                         } else if (xPos < 0)
                         {
@@ -126,8 +130,8 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
-            int y = getHeight() - sheep2.getHeight();
-            g.drawImage(sheep2, xPos, y, this);
+            int y = getHeight() - sheep.get(1).getHeight();
+            g.drawImage(sheep.get(1), xPos, y, this);
 
         }
 
