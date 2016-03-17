@@ -32,7 +32,7 @@ public class SQLiteJDBC
     
     
     
-    try {
+   /* try {
         stmt = c.createStatement();
         String sql = "INSERT INTO HighScores (ID,ScorerName,Score,LevelTo,GameLength) " +
                      "VALUES (5, 'Jay', 47, 1, '2:09:01' );"; 
@@ -57,8 +57,34 @@ public class SQLiteJDBC
         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         System.exit(0);
       }
-      System.out.println("Records created successfully");
+      System.out.println("Records created successfully");*/
+    try {
+        c.setAutoCommit(false);
+
+        stmt = c.createStatement();
+        ResultSet rs = stmt.executeQuery( "SELECT * FROM HighScores;" );
+        while ( rs.next() ) {
+           int id = rs.getInt("id");
+           String  ScorerName = rs.getString("ScorerName");
+           int level  = rs.getInt("levelTo");
+           int  score = rs.getInt("score");
+           double gameLength = rs.getDouble("GameLength");
+           System.out.println( "ID = " + id );
+           System.out.println( "NAME = " + ScorerName );
+           System.out.println( "Level Reached = " + level );
+           System.out.println( "SCORE = " + score );
+           System.out.println( "Game Length = " + gameLength );
+           System.out.println();
+        }
+        rs.close();
+        stmt.close();
+        c.close();
+      } catch ( Exception e ) {
+        System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        System.exit(0);
+      }
+      System.out.println("Operation done successfully");
+    }
     
     
   }
-}
