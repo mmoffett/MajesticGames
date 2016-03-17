@@ -14,7 +14,7 @@ public class SQLiteJDBC
       System.exit(0);
     }
     
-    try {
+   /* try {
       stmt = c.createStatement();
       String sql = "CREATE TABLE HighScores " +
                    "(ID INT PRIMARY KEY NOT NULL," +
@@ -28,7 +28,37 @@ public class SQLiteJDBC
     } catch ( Exception e ) {
       System.err.println( e.getClass().getName() + ": " + e.getMessage() );
       System.exit(0);
-    }
-    System.out.println("Table created successfully");
+    }    */
+    
+    
+    
+    try {
+        stmt = c.createStatement();
+        String sql = "INSERT INTO HighScores (ID,ScorerName,Score,LevelTo,GameLength) " +
+                     "VALUES (5, 'Jay', 47, 1, '2:09:01' );"; 
+        stmt.executeUpdate(sql);
+
+        sql = "INSERT INTO HighScores (ID,ScorerName,Score,LevelTo,GameLength) " +
+              "VALUES (6, 'Al', 225, 9, '12:00:00' );"; 
+        stmt.executeUpdate(sql);
+
+        sql = "INSERT INTO HighScores (ID,ScorerName,Score,LevelTo,GameLength) " +
+              "VALUES (7, 'Taylor', 23, 1, '0:50:00' );"; 
+        stmt.executeUpdate(sql);
+
+        sql = "INSERT INTO HighScores (ID,ScorerName,Score,LevelTo,GameLength) " +
+              "VALUES (8, 'May', 97, 2, '4:37:00' );"; 
+        stmt.executeUpdate(sql);
+
+        stmt.close();
+        c.commit();
+        c.close();
+      } catch ( Exception e ) {
+        System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        System.exit(0);
+      }
+      System.out.println("Records created successfully");
+    
+    
   }
 }
