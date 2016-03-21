@@ -99,19 +99,7 @@ public class Animation
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        xPos += direction;
-                        if (xPos + sheep.get(current).getWidth() > getWidth()+(sheep.get(current).getWidth()/2))
-                        {
-                            xPos = getWidth() - sheep.get(current).getWidth()+(sheep.get(current).getWidth()/2);;
-                            direction *= -1;
-                            current=0;
-                        } else if (xPos < -(sheep.get(current).getWidth()/2))
-                        {
-                            xPos = -(sheep.get(current).getWidth()/2);
-                            direction *= -1;
-                            current=1;
-                        }
-                        repaint();
+                        getSheep();
                     }
 
                 });
@@ -123,6 +111,27 @@ public class Animation
                 ex.printStackTrace();
             }
         }
+        
+        /**
+         * 
+         */
+        public void getSheep()
+        {
+        	xPos += direction;
+            if (xPos + sheep.get(current).getWidth() > getWidth()+(sheep.get(current).getWidth()/2))
+            {
+                xPos = getWidth() - sheep.get(current).getWidth()+(sheep.get(current).getWidth()/2);;
+                direction *= -1;
+                current=0;
+            } else if (xPos < -(sheep.get(current).getWidth()/2))
+            {
+                xPos = -(sheep.get(current).getWidth()/2);
+                direction *= -1;
+                current=1;
+            }
+            repaint();
+        }
+        
         /**
          * paintComponent - find the sheep height and draw the sheep at the current x position at a height above the bottom such that it moves along the bottom
          * 
