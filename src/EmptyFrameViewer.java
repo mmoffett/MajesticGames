@@ -9,7 +9,7 @@ public class EmptyFrameViewer
 {
     public static void main(String[] args) throws IOException 
     {
-        String path = "C:\\Users\\MarissaRoseM\\Documents\\GitHub\\MajesticGames\\src\\sheep.png";
+        String path = "src\\sheep.png";
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
         JLabel label = new JLabel(new ImageIcon(image));
