@@ -108,25 +108,24 @@ public class Animation
                 	 @Override
                      public void actionPerformed(ActionEvent e)
                      {
-                Timer timer = new Timer(2, new ActionListener() 
-                {
-                    /**
-                     * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
-                     * 
-                     * @param  e    an event that indicates that something has occurred
-                     */
-                    @Override
-                    public void actionPerformed(ActionEvent e)
-                    {
-                        getSheep();
-                    }
-
-                });
-                timer.setRepeats(true);
-                timer.setCoalesce(true);
-                timer.start();
+                		 Timer timer = new Timer(2, new ActionListener() 
+                		 {
+	                    /**
+	                     * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
+	                     * 
+	                     * @param  e    an event that indicates that something has occurred
+	                     */
+                			 @Override
+                			 public void actionPerformed(ActionEvent e)
+                			 {
+                				 getSheep();
+                			 }
+                		 });
+	                timer.setRepeats(true);
+	                timer.setCoalesce(true);
+	                timer.start();
                      }
-            });
+                });
                 
                 add(buttonPanel, BorderLayout.SOUTH);
             } catch (IOException ex) 
