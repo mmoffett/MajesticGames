@@ -11,6 +11,8 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.awt.Container;
 /**
 *An animation of a sheep going back and forth across the screen.
 * 
@@ -89,6 +91,23 @@ public class Animation
                 sheepB = ImageIO.read(file2);
                 sheep.add(sheepA);
                 sheep.add(sheepB);
+                
+                JPanel buttonPanel = new JPanel();
+                
+                addButton(buttonPanel, "Exit", new ActionListener()
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        System.exit(0);
+                    }
+                });
+                
+                addButton(buttonPanel, "Start", new ActionListener()
+                {
+                	 @Override
+                     public void actionPerformed(ActionEvent e)
+                     {
                 Timer timer = new Timer(2, new ActionListener() 
                 {
                     /**
@@ -106,6 +125,10 @@ public class Animation
                 timer.setRepeats(true);
                 timer.setCoalesce(true);
                 timer.start();
+                     }
+            });
+                
+                add(buttonPanel, BorderLayout.SOUTH);
             } catch (IOException ex) 
             {
                 ex.printStackTrace();
@@ -145,6 +168,19 @@ public class Animation
             int y = getHeight() - sheep.get(current).getHeight();
             g.drawImage(sheep.get(current), xPos, y, this);
 
+        }
+        /**
+         * Adds a button to a container.
+         * 
+         * @param c          the container
+         * @param title      the button title
+         * @param listener   the action listener for the button
+         */
+        public void addButton(Container c, String title, ActionListener listener) 
+        {
+          JButton button = new JButton(title);
+          c.add(button);
+          button.addActionListener(listener);
         }
 
     }
