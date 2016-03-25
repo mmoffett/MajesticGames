@@ -76,6 +76,19 @@ public class Animation
         private int direction = 1;
         private int current = 1;
         private boolean animation=false;
+        Timer timer = new Timer(2, new ActionListener() 
+		 {
+            /**
+             * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
+             * 
+             * @param  e    an event that indicates that something has occurred
+             */
+    			 @Override
+    			 public void actionPerformed(ActionEvent e)
+    			 {
+    				 getSheep();
+    			 }
+    		 });
         Vector<BufferedImage> sheep =new Vector<BufferedImage>();
         /**
          * Constructor for objects of class AnimationPane
@@ -101,23 +114,18 @@ public class Animation
                 	 @Override
                      public void actionPerformed(ActionEvent e)
                      {
-                		 animation=true;
-                		 Timer timer = new Timer(2, new ActionListener() 
+                		 timer.setRepeats(true);
+      	                 timer.setCoalesce(true);
+                		 if(animation==false)
                 		 {
-	                    /**
-	                     * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
-	                     * 
-	                     * @param  e    an event that indicates that something has occurred
-	                     */
-                			 @Override
-                			 public void actionPerformed(ActionEvent e)
-                			 {
-                				 getSheep();
-                			 }
-                		 });
-	                timer.setRepeats(true);
-	                timer.setCoalesce(true);
-	                timer.start();
+	                		animation=true;	 
+			                timer.start();
+                		 }
+                		 else
+                		 {
+                			timer.restart();
+                		 }
+                		 
                      }
                 });
                 addButton(buttonPanel, "High Scores", new ActionListener()
