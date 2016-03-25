@@ -75,6 +75,7 @@ public class Animation
         private int xPos = 0;
         private int direction = 1;
         private int current = 1;
+        private boolean animation=false;
         Vector<BufferedImage> sheep =new Vector<BufferedImage>();
         /**
          * Constructor for objects of class AnimationPane
@@ -100,6 +101,7 @@ public class Animation
                 	 @Override
                      public void actionPerformed(ActionEvent e)
                      {
+                		 animation=true;
                 		 Timer timer = new Timer(2, new ActionListener() 
                 		 {
 	                    /**
@@ -135,8 +137,7 @@ public class Animation
                         System.exit(0);
                     }
                 });
-                
-               
+                             
                 
                 add(buttonPanel, BorderLayout.SOUTH);
             } catch (IOException ex) 
@@ -175,8 +176,11 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
+            if(animation==true)
+            {
             int y = getHeight() - sheep.get(current).getHeight();
             g.drawImage(sheep.get(current), xPos, y, this);
+            }
 
         }
         /**
