@@ -94,15 +94,7 @@ public class Animation
                 
                 JPanel buttonPanel = new JPanel();
                 
-                addButton(buttonPanel, "Exit", new ActionListener()
-                {
-                    @Override
-                    public void actionPerformed(ActionEvent e)
-                    {
-                        System.exit(0);
-                    }
-                });
-                
+                               
                 addButton(buttonPanel, "Start", new ActionListener()
                 {
                 	 @Override
@@ -126,6 +118,25 @@ public class Animation
 	                timer.start();
                      }
                 });
+                addButton(buttonPanel, "High Scores", new ActionListener()
+                {
+                	@Override
+                	public void actionPerformed(ActionEvent e)
+                	{
+                		
+                	}
+                	
+                });
+                addButton(buttonPanel, "Exit", new ActionListener()
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        System.exit(0);
+                    }
+                });
+                
+               
                 
                 add(buttonPanel, BorderLayout.SOUTH);
             } catch (IOException ex) 
