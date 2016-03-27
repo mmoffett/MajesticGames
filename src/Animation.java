@@ -212,17 +212,28 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
-            if(animation==true)
+            drawSheep(g);
+            drawHighScores(g);
+
+        }
+        
+        private void drawSheep(Graphics g)
+        {
+        	if(animation==true)
             {
             int y = getHeight() - sheep.get(current).getHeight();
             g.drawImage(sheep.get(current), xPos, y, this);
             }
-            if(scores==true)
+        }
+        private void drawHighScores(Graphics g)
+        {
+        	if(scores==true)
             {
             	g.drawString("HELLO",500,500);
             }
-
         }
+        
+        
         /**
          * Adds a button to a container.
          * 
