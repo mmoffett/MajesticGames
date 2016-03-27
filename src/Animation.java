@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.awt.Container;
-import SQLiteJDBC;
 /**
 *An animation of a sheep going back and forth across the screen.
 * 
@@ -79,6 +78,7 @@ public class Animation
         private int current = 1;
         private boolean animation=false;
         private boolean scores=false;
+        SQLiteJDBC data=new SQLiteJDBC();
         Timer timer = new Timer(2, new ActionListener() 
 		 {
             /**
@@ -240,7 +240,7 @@ public class Animation
         {
         	if(scores==true)
             {
-            	g.drawString("HELLO",500,500);
+            	data.output(g);
             }
         }
         
