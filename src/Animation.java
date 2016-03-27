@@ -203,7 +203,7 @@ public class Animation
         }
         
         /**
-         * paintComponent - find the sheep height and draw the sheep at the current x position at a height above the bottom such that it moves along the bottom
+         * paintComponent - draw the screen with the current setting
          * 
          * @param  g    The Graphics we plan to use
          */
@@ -216,7 +216,12 @@ public class Animation
             drawHighScores(g);
 
         }
-        
+        /**
+         * drawSheep - find the sheep height and draw the sheep at the current 
+         * x position at a height above the bottom such that it moves along the bottom
+         * 
+         * @param  g    The Graphics we plan to use
+         */
         private void drawSheep(Graphics g)
         {
         	if(animation==true)
@@ -225,6 +230,11 @@ public class Animation
             g.drawImage(sheep.get(current), xPos, y, this);
             }
         }
+        /**
+         * drawHighScores - display the high scores
+         * 
+         * @param  g    The Graphics we plan to use
+         */
         private void drawHighScores(Graphics g)
         {
         	if(scores==true)
