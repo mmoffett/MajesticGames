@@ -58,7 +58,8 @@ public class Animation
         });
     }
     /**
-     *looks at file that contains image and performs the action to animate the image and move it back and forth across the screen.
+     *looks at file that contains image and performs the action to 
+     *animate the image and move it back and forth across the screen.
      * 
      * @author (Marissa Moffett) 
      * @version (3/2/16)
@@ -79,7 +80,8 @@ public class Animation
         Timer timer = new Timer(2, new ActionListener() 
 		 {
             /**
-             * actionPerformed - an overridden version of the actionPerformed() function from ActionListener interface that is invoked when an action occurs
+             * actionPerformed - an overridden version of the actionPerformed() function from 
+             * ActionListener interface that is invoked when an action occurs
              * 
              * @param  e    an event that indicates that something has occurred
              */
@@ -111,7 +113,13 @@ public class Animation
                                
                 addButton(buttonPanel, "Start", new ActionListener()
                 {
-                	 @Override
+                	/**
+                     * actionPerformed - an overridden version of the actionPerformed() function from 
+                     * ActionListener interface that is invoked when an action occurs
+                     * 
+                     * @param  e    an event that indicates that something has occurred
+                     */ 
+                	@Override
                      public void actionPerformed(ActionEvent e)
                      {
                 		 timer.setRepeats(true);
@@ -130,6 +138,12 @@ public class Animation
                 });
                 addButton(buttonPanel, "High Scores", new ActionListener()
                 {
+                	/**
+                     * actionPerformed - an overridden version of the actionPerformed() function from 
+                     * ActionListener interface that is invoked when an action occurs
+                     * 
+                     * @param  e    an event that indicates that something has occurred
+                     */
                 	@Override
                 	public void actionPerformed(ActionEvent e)
                 	{
@@ -139,6 +153,12 @@ public class Animation
                 });
                 addButton(buttonPanel, "Exit", new ActionListener()
                 {
+                	/**
+                     * actionPerformed - an overridden version of the actionPerformed() function from 
+                     * ActionListener interface that is invoked when an action occurs
+                     * 
+                     * @param  e    an event that indicates that something has occurred
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
@@ -155,7 +175,7 @@ public class Animation
         }
         
         /**
-         * 
+         * getSheep - sets the animation to run back and forth across the screen
          */
         public void getSheep()
         {
