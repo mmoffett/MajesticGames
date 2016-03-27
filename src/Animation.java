@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.awt.Container;
+import SQLiteJDBC;
 /**
 *An animation of a sheep going back and forth across the screen.
 * 
