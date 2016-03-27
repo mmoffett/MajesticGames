@@ -123,6 +123,7 @@ public class Animation
                 	@Override
                      public void actionPerformed(ActionEvent e)
                      {
+                		 scores=false;
                 		 timer.setRepeats(true);
       	                 timer.setCoalesce(true);
                 		 if(animation==false)
@@ -149,6 +150,7 @@ public class Animation
                 	public void actionPerformed(ActionEvent e)
                 	{
                 		scores=true;
+                		animation=false;
                 		addHighScores();
                 	}
                 	
