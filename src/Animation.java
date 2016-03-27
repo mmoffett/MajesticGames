@@ -77,6 +77,7 @@ public class Animation
         private int direction = 1;
         private int current = 1;
         private boolean animation=false;
+        private boolean scores=false;
         Timer timer = new Timer(2, new ActionListener() 
 		 {
             /**
@@ -147,7 +148,8 @@ public class Animation
                 	@Override
                 	public void actionPerformed(ActionEvent e)
                 	{
-                		
+                		scores=true;
+                		addHighScores();
                 	}
                 	
                 });
@@ -193,6 +195,10 @@ public class Animation
             }
             repaint();
         }
+        public void addHighScores()
+        {
+        	repaint();
+        }
         
         /**
          * paintComponent - find the sheep height and draw the sheep at the current x position at a height above the bottom such that it moves along the bottom
@@ -208,6 +214,10 @@ public class Animation
             {
             int y = getHeight() - sheep.get(current).getHeight();
             g.drawImage(sheep.get(current), xPos, y, this);
+            }
+            if(scores==true)
+            {
+            	g.drawString("HELLO",500,500);
             }
 
         }
