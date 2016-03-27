@@ -72,18 +72,18 @@ public class SQLiteJDBC
 
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM HighScores;" );
-            while ( rs.next() ) {
+            for (int y=50; rs.next(); y=y+20 ) {
                int id = rs.getInt("id");
                String  ScorerName = rs.getString("ScorerName");
                int level  = rs.getInt("levelTo");
                int  score = rs.getInt("score");
                double gameLength = rs.getDouble("GameLength");
-               System.out.println( "ID = " + id );
-               System.out.println( "NAME = " + ScorerName );
-               System.out.println( "Level Reached = " + level );
-               System.out.println( "SCORE = " + score );
-               System.out.println( "Game Length = " + gameLength );
-               System.out.println();
+               g.drawString( "ID = " + id , 20, y);
+               g.drawString("NAME = " + ScorerName, 100, y );
+               g.drawString( "Level Reached = " + level, 190, y);
+               g.drawString( "SCORE = " + score, 320, y);
+               g.drawString( "Game Length = " + gameLength, 400, y);
+               
             }
             rs.close();
             stmt.close();
