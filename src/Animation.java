@@ -213,6 +213,7 @@ public class Animation
         {
             super.paintComponent(g);
             setBackground(Color.black);
+            g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
 
