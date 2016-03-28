@@ -71,7 +71,7 @@ public class SQLiteJDBC
             c.setAutoCommit(false);
 
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM HighScores;" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM HighScores ORDER BY score DESC" );
             for (int y=50; rs.next(); y=y+20 ) {
                int id = rs.getInt("id");
                String  ScorerName = rs.getString("ScorerName");
