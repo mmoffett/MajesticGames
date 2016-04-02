@@ -6,7 +6,10 @@ import java.util.Vector;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -71,8 +74,10 @@ public class Animation
         /**
 		 * 
 		 */
-		private BufferedImage sheepA;
-		private BufferedImage sheepB;
+    	
+        
+		private /*Buffered*/Image sheepA;
+		private /*Buffered*/Image sheepB;
         private int xPos = 0;
         private int direction = 1;
         private int current = 1;
@@ -93,20 +98,21 @@ public class Animation
     				 getSheep();
     			 }
     		 });
-        Vector<BufferedImage> sheep =new Vector<BufferedImage>();
+        Vector</*Buffered*/Image> sheep =new Vector</*Buffered*/Image>();
         /**
          * Constructor for objects of class AnimationPane
          */
         public AnimationPane()
         {
-            try 
+            //try 
             {
-            	String path = "src/sheep2a.png";
-            	String path2= "src/sheep2b.png";
-                File file = new File(path);
-                File file2 = new File(path2);
-                sheepA = ImageIO.read(file);
-                sheepB = ImageIO.read(file2);
+            	String path = "src/sheepGif.gif";
+            	String path2= "src/sheepGif.gif";
+                //File file = new File(path);
+                //File file2 = new File(path2);
+                
+                sheepA = /*ImageIO.read(file)*/Toolkit.getDefaultToolkit().createImage(path);
+                sheepB = /*ImageIO.read(file2)*/Toolkit.getDefaultToolkit().createImage(path2);
                 sheep.add(sheepA);
                 sheep.add(sheepB);
                 
@@ -173,9 +179,9 @@ public class Animation
                              
                 
                 add(buttonPanel, BorderLayout.SOUTH);
-            } catch (IOException ex) 
+            } //catch (IOException ex) 
             {
-                ex.printStackTrace();
+                //ex.printStackTrace();
             }
         }
         
@@ -185,14 +191,15 @@ public class Animation
         public void getSheep()
         {
         	xPos += direction;
-            if (xPos + sheep.get(current).getWidth() > getWidth()+(sheep.get(current).getWidth()/2))
+            ImageObserver paintingChild = null;
+			if (xPos + sheep.get(current).getWidth(paintingChild) > getWidth()+(sheep.get(current).getWidth(paintingChild)/2))
             {
-                xPos = getWidth() - sheep.get(current).getWidth()+(sheep.get(current).getWidth()/2);;
+                xPos = getWidth() - sheep.get(current).getWidth(paintingChild)+(sheep.get(current).getWidth(paintingChild)/2);;
                 direction *= -1;
                 current=0;
-            } else if (xPos < -(sheep.get(current).getWidth()/2))
+            } else if (xPos < -(sheep.get(current).getWidth(paintingChild)/2))
             {
-                xPos = -(sheep.get(current).getWidth()/2);
+                xPos = -(sheep.get(current).getWidth(paintingChild)/2);
                 direction *= -1;
                 current=1;
             }
@@ -211,7 +218,7 @@ public class Animation
         @Override
         protected void paintComponent(Graphics g) 
         {
-            super.paintComponent(g);
+        	super.paintComponent(g);
             setBackground(Color.black);
             g.setColor(Color.white);
             drawSheep(g);
@@ -228,7 +235,8 @@ public class Animation
         {
         	if(animation==true)
             {
-            int y = getHeight() - sheep.get(current).getHeight();
+            ImageObserver paintingChild = null;
+			int y = getHeight() - sheep.get(current).getHeight(paintingChild);
             g.drawImage(sheep.get(current), xPos, y, this);
             }
         }
