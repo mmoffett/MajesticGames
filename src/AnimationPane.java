@@ -221,4 +221,14 @@ import javax.swing.Timer;
           c.add(button);
           button.addActionListener(listener);
         }
+        
+
+    	public void moveRight() 
+    	{	
+    		
+    	}
+    	public void moveLeft()
+    	{
+    		
+    	}
     }

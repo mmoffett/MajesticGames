@@ -45,13 +45,4 @@ public class Animation
 
         });
     }
-
-	public void moveRight() 
-	{	
-		
-	}
-	public void moveLeft()
-	{
-		
-	}
 }
