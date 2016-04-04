@@ -1,21 +1,6 @@
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.util.Vector;
-
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import java.awt.Container;
 /**
 *An animation of a sheep going back and forth across the screen.
 * 
