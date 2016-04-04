@@ -267,7 +267,14 @@ public class Animation
           c.add(button);
           button.addActionListener(listener);
         }
-
+        
     }
-
+	public void moveRight() 
+	{	
+		
+	}
+	public void moveLeft()
+	{
+		
+	}
 }
