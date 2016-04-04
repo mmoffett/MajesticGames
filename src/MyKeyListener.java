@@ -22,8 +22,6 @@ class MyKeyListener implements KeyListener
 		        System.out.println("Pressed LEFT");
 		        a.moveLeft(); 
 		    }
-		//String key=KeyStroke.getKeyStrokeForEvent(event).toString();
-		//key=key.replace("pressed","");
 	}
 
 	@Override
