@@ -4,11 +4,11 @@ import java.awt.event.KeyListener;
 
 class MyKeyListener implements KeyListener
 {
-	Animation a;
+	AnimationPane a;
 	
 	public MyKeyListener()
 	{
-		Animation a=new Animation();
+		a=new AnimationPane();
 	}
 	
 	@Override
