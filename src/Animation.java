@@ -24,25 +24,7 @@ public class Animation
     */
     public Animation() 
     {
-        EventQueue.invokeLater(new Runnable() 
-        {
-            /**
-             * run - creates the frame in which the animation will occur
-             * 
-             */
-            @Override
-            public void run()
-            {
-                JFrame frame = new JFrame("Majestic Games");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setLayout(new BorderLayout());
-                frame.add(new AnimationPane());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            }
-
-        });
+    	
+        EventQueue.invokeLater(new StartRun());
     }
 }
