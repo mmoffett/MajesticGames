@@ -72,6 +72,7 @@ import javax.swing.Timer;
                 
                 JPanel buttonPanel = new JPanel();
                 
+                requestFocus();
                                
                 addButton(buttonPanel, "Start", new ActionListener()
                 {
@@ -225,7 +226,7 @@ import javax.swing.Timer;
 
     	public void moveRight() 
     	{	
-    		
+    		System.exit(0);
     	}
     	public void moveLeft()
     	{
