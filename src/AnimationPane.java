@@ -29,20 +29,7 @@ import javax.swing.Timer;
         private boolean animation=false;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
-        Timer timer = new Timer(2, new ActionListener() 
-		 {
-            /**
-             * actionPerformed - an overridden version of the actionPerformed() function from 
-             * ActionListener interface that is invoked when an action occurs
-             * 
-             * @param  e    an event that indicates that something has occurred
-             */
-    			 @Override
-    			 public void actionPerformed(ActionEvent e)
-    			 {
-    				 getSheep();
-    			 }
-    		 });
+		
         Vector</*Buffered*/Image> sheep =new Vector</*Buffered*/Image>();
         /**
          * Constructor for objects of class AnimationPane
@@ -79,18 +66,8 @@ import javax.swing.Timer;
                      public void actionPerformed(ActionEvent e)
                      {
                 		 scores=false;
-                		 timer.setRepeats(true);
-      	                 timer.setCoalesce(true);
-                		 if(animation==false)
-                		 {
-	                		animation=true;	 
-			                timer.start();
-                		 }
-                		 else
-                		 {
-                			timer.restart();
-                		 }
-                		 
+                		 animation=true;	 
+	                	 getSheep();	                		               		 
                      }
                 });
                 b.addButton(buttonPanel, "High Scores", new ActionListener()
