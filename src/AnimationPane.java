@@ -11,7 +11,6 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
 /**
      *looks at file that contains image and performs the action to 
      *animate the image and move it back and forth across the screen.
@@ -22,12 +21,6 @@ import javax.swing.Timer;
     @SuppressWarnings("serial")
 	public class AnimationPane extends JPanel 
     {
-
-        /**
-		 * 
-		 */
-    	
-        
 		private /*Buffered*/Image sheepA;
 		private /*Buffered*/Image sheepB;
         private int xPos = 0;
@@ -178,7 +171,6 @@ import javax.swing.Timer;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
-
         }
         /**
          * drawSheep - find the sheep height and draw the sheep at the current 
@@ -208,7 +200,6 @@ import javax.swing.Timer;
             }
         }
         
-
     	public void moveRight() 
     	{	
     		System.exit(0);
