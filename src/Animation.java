@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 /**
 *An animation of a sheep going back and forth across the screen.
