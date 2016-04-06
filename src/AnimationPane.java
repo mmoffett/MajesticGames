@@ -73,8 +73,10 @@ import javax.swing.Timer;
                 JPanel buttonPanel = new JPanel();
                 
                 requestFocus();
+                
+                AddButtons b=new AddButtons();
                                
-                addButton(buttonPanel, "Start", new ActionListener()
+                b.addButton(buttonPanel, "Start", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -100,7 +102,7 @@ import javax.swing.Timer;
                 		 
                      }
                 });
-                addButton(buttonPanel, "High Scores", new ActionListener()
+                b.addButton(buttonPanel, "High Scores", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -117,7 +119,7 @@ import javax.swing.Timer;
                 	}
                 	
                 });
-                addButton(buttonPanel, "Exit", new ActionListener()
+                b.addButton(buttonPanel, "Exit", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -206,21 +208,6 @@ import javax.swing.Timer;
             {
             	data.output(g);
             }
-        }
-        
-        
-        /**
-         * Adds a button to a container.
-         * 
-         * @param c          the container
-         * @param title      the button title
-         * @param listener   the action listener for the button
-         */
-        public void addButton(Container c, String title, ActionListener listener) 
-        {
-          JButton button = new JButton(title);
-          c.add(button);
-          button.addActionListener(listener);
         }
         
 
