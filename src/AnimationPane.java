@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -9,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
