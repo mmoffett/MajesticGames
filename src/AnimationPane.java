@@ -9,7 +9,6 @@ import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
      *looks at file that contains image and performs the action to 
@@ -179,10 +178,21 @@ import javax.swing.Timer;
         
     	public void moveRight() 
     	{	
-    		System.exit(0);
+    		if (direction==-1)
+    		{
+    			direction=1;
+    			current=0;
+    		}
+    		getSheep();
     	}
     	public void moveLeft()
     	{
-    		
+    		if(direction==1)
+    		{
+    			direction=-1;
+    			current=1;
+    		}
+    		getSheep();
     	}
-    }
+ }
+    
