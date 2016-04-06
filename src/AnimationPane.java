@@ -159,9 +159,9 @@ import javax.swing.Timer;
         {
         	if(animation==true)
             {
-            ImageObserver paintingChild = null;
-			int y = getHeight() - sheep.get(current).getHeight(paintingChild);
-            g.drawImage(sheep.get(current), xPos, y, this);
+        		ImageObserver paintingChild = null;
+        		int y = getHeight() - sheep.get(current).getHeight(paintingChild);
+        		g.drawImage(sheep.get(current), xPos, y, this);
             }
         }
         /**
