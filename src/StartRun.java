@@ -12,7 +12,8 @@ public class StartRun implements Runnable
 		JFrame frame = new JFrame("Majestic Games");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-        frame.add(new AnimationPane());
+        AnimationPane a=new AnimationPane();
+        frame.add(a);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
