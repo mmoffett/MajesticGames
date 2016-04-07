@@ -111,12 +111,10 @@ import javax.swing.KeyStroke;
                 im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
                 im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
                 im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
 
                 am.put("RightArrow", new ArrowAction("RightArrow"));
                 am.put("LeftArrow", new ArrowAction("LeftArrow"));
                 am.put("UpArrow", new ArrowAction("UpArrow"));
-                am.put("DownArrow", new ArrowAction("DownArrow"));
                 
         }
         
@@ -208,6 +206,10 @@ import javax.swing.KeyStroke;
     		}
     		getSheep();
     	}
+    	public void moveUp()
+    	{
+    		
+    	}
     	public class ArrowAction extends AbstractAction 
     	{
 
@@ -224,16 +226,15 @@ import javax.swing.KeyStroke;
                 if (cmd.equalsIgnoreCase("LeftArrow")) 
                 {
                     moveLeft();
-                } else if (cmd.equalsIgnoreCase("RightArrow")) 
+                } 
+                else if (cmd.equalsIgnoreCase("RightArrow")) 
                 {
                     moveRight();
-                } else if (cmd.equalsIgnoreCase("UpArrow")) 
+                } 
+                else if (cmd.equalsIgnoreCase("UpArrow")) 
                 {
-                    System.out.println("The up arrow was pressed!");
-                } else if (cmd.equalsIgnoreCase("DownArrow")) 
-                {
-                    System.out.println("The down arrow was pressed!");
-                }
+                    moveUp();
+                } 
             }
         }
  }
