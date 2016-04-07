@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
@@ -43,19 +43,19 @@ import javax.swing.JPanel;
                 sheep.add(sheepA);
                 sheep.add(sheepB);
                 
-                /*JPanel buttonPanel = new JPanel();
+                JPanel buttonPanel = new JPanel();
                 
                 
                 AddButtons b=new AddButtons();
                                
                 b.addButton(buttonPanel, "Start", new ActionListener()
                 {
-                	*//**
+                	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     *//* 
+                     */ 
                 	@Override
                      public void actionPerformed(ActionEvent e)
                      {
@@ -66,12 +66,12 @@ import javax.swing.JPanel;
                 });
                 b.addButton(buttonPanel, "High Scores", new ActionListener()
                 {
-                	*//**
+                	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     *//*
+                     */
                 	@Override
                 	public void actionPerformed(ActionEvent e)
                 	{
@@ -83,12 +83,12 @@ import javax.swing.JPanel;
                 });
                 b.addButton(buttonPanel, "Exit", new ActionListener()
                 {
-                	*//**
+                	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     *//*
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
@@ -97,11 +97,7 @@ import javax.swing.JPanel;
                 });
                              
                 
-                add(buttonPanel, BorderLayout.SOUTH);*/
-                
-             scores=false;
-       		 animation=true;	 
-           	 getSheep();
+                add(buttonPanel, BorderLayout.SOUTH);
            	 
         }
         
