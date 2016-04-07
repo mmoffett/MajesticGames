@@ -18,8 +18,6 @@ public class StartRun implements Runnable
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setFocusable(true);
-		frame.addKeyListener(new MyKeyListener(a));
 	}
 
 }

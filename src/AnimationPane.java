@@ -5,10 +5,15 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
      *looks at file that contains image and performs the action to 
@@ -99,6 +104,20 @@ import javax.swing.JPanel;
                 
                 add(buttonPanel, BorderLayout.SOUTH);
            	 
+                
+                InputMap im = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+                ActionMap am = this.getActionMap();
+
+                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
+                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
+                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
+                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
+
+                am.put("RightArrow", new ArrowAction("RightArrow"));
+                am.put("LeftArrow", new ArrowAction("LeftArrow"));
+                am.put("UpArrow", new ArrowAction("UpArrow"));
+                am.put("DownArrow", new ArrowAction("DownArrow"));
+                
         }
         
         /**
@@ -189,5 +208,26 @@ import javax.swing.JPanel;
     		}
     		getSheep();
     	}
+    	public class ArrowAction extends AbstractAction {
+
+            private String cmd;
+
+            public ArrowAction(String cmd) {
+                this.cmd = cmd;
+            }
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (cmd.equalsIgnoreCase("LeftArrow")) {
+                    moveLeft();
+                } else if (cmd.equalsIgnoreCase("RightArrow")) {
+                    moveRight();
+                } else if (cmd.equalsIgnoreCase("UpArrow")) {
+                    System.out.println("The up arrow was pressed!");
+                } else if (cmd.equalsIgnoreCase("DownArrow")) {
+                    System.out.println("The down arrow was pressed!");
+                }
+            }
+        }
  }
     
