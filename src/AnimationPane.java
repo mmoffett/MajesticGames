@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
@@ -20,7 +20,7 @@ import javax.swing.JPanel;
     @SuppressWarnings("serial")
 	public class AnimationPane extends JPanel 
     {
-		private /*Buffered*/Image sheepA;
+		private Image sheepA;
 		private Image sheepB;
         private int xPos = 0;
         private int direction = 1;
@@ -43,19 +43,19 @@ import javax.swing.JPanel;
                 sheep.add(sheepA);
                 sheep.add(sheepB);
                 
-                JPanel buttonPanel = new JPanel();
+                /*JPanel buttonPanel = new JPanel();
                 
                 
                 AddButtons b=new AddButtons();
                                
                 b.addButton(buttonPanel, "Start", new ActionListener()
                 {
-                	/**
+                	*//**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     */ 
+                     *//* 
                 	@Override
                      public void actionPerformed(ActionEvent e)
                      {
@@ -66,12 +66,12 @@ import javax.swing.JPanel;
                 });
                 b.addButton(buttonPanel, "High Scores", new ActionListener()
                 {
-                	/**
+                	*//**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     */
+                     *//*
                 	@Override
                 	public void actionPerformed(ActionEvent e)
                 	{
@@ -83,12 +83,12 @@ import javax.swing.JPanel;
                 });
                 b.addButton(buttonPanel, "Exit", new ActionListener()
                 {
-                	/**
+                	*//**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
                      * ActionListener interface that is invoked when an action occurs
                      * 
                      * @param  e    an event that indicates that something has occurred
-                     */
+                     *//*
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
@@ -97,8 +97,12 @@ import javax.swing.JPanel;
                 });
                              
                 
-                add(buttonPanel, BorderLayout.SOUTH);
+                add(buttonPanel, BorderLayout.SOUTH);*/
                 
+             scores=false;
+       		 animation=true;	 
+           	 getSheep();
+           	 
         }
         
         /**
@@ -106,6 +110,8 @@ import javax.swing.JPanel;
          */
         public void getSheep()
         {
+        	for(int i=0; i<10; i++)
+        	{
         	xPos += direction;
             ImageObserver paintingChild = null;
 			if (xPos + sheep.get(current).getWidth(paintingChild) > getWidth()+(sheep.get(current).getWidth(paintingChild)/2))
@@ -120,6 +126,7 @@ import javax.swing.JPanel;
                 current=1;
             }
             repaint();
+        	}
         }
         public void addHighScores()
         {
@@ -185,7 +192,6 @@ import javax.swing.JPanel;
     			current=1;
     		}
     		getSheep();
-    		System.exit(0);
     	}
  }
     
