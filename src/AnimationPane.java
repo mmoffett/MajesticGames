@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 	public class AnimationPane extends JPanel 
     {
 		private /*Buffered*/Image sheepA;
-		private /*Buffered*/Image sheepB;
+		private Image sheepB;
         private int xPos = 0;
         private int direction = 1;
         private int current = 1;
@@ -29,27 +29,22 @@ import javax.swing.JPanel;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
 		
-        Vector</*Buffered*/Image> sheep =new Vector</*Buffered*/Image>();
+        Vector<Image> sheep =new Vector<Image>();
         /**
          * Constructor for objects of class AnimationPane
          */
         public AnimationPane()
         {
-            //try 
-            {
             	String path = "src/sheepGif.gif";
             	String path2= "src/sheepGif.gif";
-                //File file = new File(path);
-                //File file2 = new File(path2);
                 
-                sheepA = /*ImageIO.read(file)*/Toolkit.getDefaultToolkit().createImage(path);
-                sheepB = /*ImageIO.read(file2)*/Toolkit.getDefaultToolkit().createImage(path2);
+                sheepA = Toolkit.getDefaultToolkit().createImage(path);
+                sheepB = Toolkit.getDefaultToolkit().createImage(path2);
                 sheep.add(sheepA);
                 sheep.add(sheepB);
                 
                 JPanel buttonPanel = new JPanel();
                 
-                requestFocus();
                 
                 AddButtons b=new AddButtons();
                                
@@ -103,10 +98,7 @@ import javax.swing.JPanel;
                              
                 
                 add(buttonPanel, BorderLayout.SOUTH);
-            } //catch (IOException ex) 
-            {
-                //ex.printStackTrace();
-            }
+                
         }
         
         /**
@@ -193,6 +185,7 @@ import javax.swing.JPanel;
     			current=1;
     		}
     		getSheep();
+    		System.exit(0);
     	}
  }
     
