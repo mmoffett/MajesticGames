@@ -104,7 +104,7 @@ import javax.swing.KeyStroke;
                 
                 add(buttonPanel, BorderLayout.SOUTH);
            	 
-                
+                //Arrow Key reading
                 InputMap im = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
                 ActionMap am = this.getActionMap();
 
@@ -208,23 +208,30 @@ import javax.swing.KeyStroke;
     		}
     		getSheep();
     	}
-    	public class ArrowAction extends AbstractAction {
+    	public class ArrowAction extends AbstractAction 
+    	{
 
             private String cmd;
 
-            public ArrowAction(String cmd) {
+            public ArrowAction(String cmd) 
+            {
                 this.cmd = cmd;
             }
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cmd.equalsIgnoreCase("LeftArrow")) {
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (cmd.equalsIgnoreCase("LeftArrow")) 
+                {
                     moveLeft();
-                } else if (cmd.equalsIgnoreCase("RightArrow")) {
+                } else if (cmd.equalsIgnoreCase("RightArrow")) 
+                {
                     moveRight();
-                } else if (cmd.equalsIgnoreCase("UpArrow")) {
+                } else if (cmd.equalsIgnoreCase("UpArrow")) 
+                {
                     System.out.println("The up arrow was pressed!");
-                } else if (cmd.equalsIgnoreCase("DownArrow")) {
+                } else if (cmd.equalsIgnoreCase("DownArrow")) 
+                {
                     System.out.println("The down arrow was pressed!");
                 }
             }
