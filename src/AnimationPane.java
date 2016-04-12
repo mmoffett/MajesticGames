@@ -31,6 +31,8 @@ import javax.swing.KeyStroke;
 		private Image sheepB;
         private int xPos = 0;
         private int direction = 1;
+        private int directX=1;
+        private int directY=1;
         private int current = 1;
         
         private int backX;
@@ -43,7 +45,7 @@ import javax.swing.KeyStroke;
         SQLiteJDBC data=new SQLiteJDBC();
         
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/temp_2.jpg");
-		
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
         /**
@@ -56,7 +58,7 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+				
 				backX=(int)(screenSize.getWidth())-backWidth;
 				backY=(int)(screenSize.getHeight())-backHeight;
         	
@@ -179,7 +181,20 @@ import javax.swing.KeyStroke;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
-        }              
+        }
+        private void changeBack()
+        {
+        	if(backX==(int)(screenSize.getWidth())-backWidth)
+        		directX=1;
+        	else if(backX==0)
+        		directX=-1;
+        	if(backY==(int)(screenSize.getHeight())-backHeight)
+        		directY=1;
+        	else if(backY==0)
+        		directY=-1;
+        	backX+=directX;
+        	backY+=directY;
+        }
         /**
          * drawSheep - find the sheep height and draw the sheep at the current 
          * x position at a height above the bottom such that it moves along the bottom
@@ -228,7 +243,8 @@ import javax.swing.KeyStroke;
     	}
     	public void moveUp()
     	{
-    		
+    		changeBack();
+    		repaint();
     	}
     	public class ArrowAction extends AbstractAction 
     	{
