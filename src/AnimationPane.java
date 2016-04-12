@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
@@ -30,11 +32,17 @@ import javax.swing.KeyStroke;
         private int xPos = 0;
         private int direction = 1;
         private int current = 1;
+        
+        private int backX;
+        private int backY;
+        private int backWidth;
+        private int backHeight;
+        
         private boolean animation=false;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
         
-        Image dimg=Toolkit.getDefaultToolkit().createImage("src/back.gif");
+        Image dimg=Toolkit.getDefaultToolkit().createImage("src/temp_2.jpg");
 		
         
         Vector<Image> sheep =new Vector<Image>();
@@ -43,6 +51,15 @@ import javax.swing.KeyStroke;
          */
         public AnimationPane()
         {
+        		//temporarily establishes an image icon to find the height and width of image
+        		ImageIcon temp=new ImageIcon(dimg);
+				backWidth=temp.getIconWidth();
+				backHeight=temp.getIconHeight();
+				
+				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+				backX=(int)(screenSize.getWidth())-backWidth;
+				backY=(int)(screenSize.getHeight())-backHeight;
+        	
             	String path = "src/sheepGif.gif";
             	String path2= "src/sheepGif.gif";
                 
@@ -158,11 +175,11 @@ import javax.swing.KeyStroke;
         protected void paintComponent(Graphics g) 
         {
         	super.paintComponent(g);
-            g.drawImage(dimg, 0, 0, this);
+            g.drawImage(dimg, backX, backY, this);
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
-        }
+        }              
         /**
          * drawSheep - find the sheep height and draw the sheep at the current 
          * x position at a height above the bottom such that it moves along the bottom
