@@ -33,7 +33,10 @@ import javax.swing.KeyStroke;
         private boolean animation=false;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
+        
+        Image dimg=Toolkit.getDefaultToolkit().createImage("src/back.gif");
 		
+        
         Vector<Image> sheep =new Vector<Image>();
         /**
          * Constructor for objects of class AnimationPane
@@ -155,7 +158,7 @@ import javax.swing.KeyStroke;
         protected void paintComponent(Graphics g) 
         {
         	super.paintComponent(g);
-            setBackground(Color.black);
+            g.drawImage(dimg, 0, 0, this);
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
