@@ -7,9 +7,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
@@ -44,6 +48,7 @@ import javax.swing.KeyStroke;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
         
+        private BufferedImage cloudA;
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/temp_2.jpg");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
@@ -58,6 +63,16 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
+				String cloudPath="src/Cloud1.png";
+				File cloudFile=new File(cloudPath);
+				try
+				{
+				cloudA=ImageIO.read(cloudFile);
+				}
+				catch(IOException e)
+				{
+					e.printStackTrace();
+				}
 				
 				backX=(int)(screenSize.getWidth())-backWidth;
 				backY=(int)(screenSize.getHeight())-backHeight;
@@ -181,6 +196,7 @@ import javax.swing.KeyStroke;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
+            g.drawImage(cloudA,800,20,this);
         }
         private void changeBack()
         {
