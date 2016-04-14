@@ -78,7 +78,7 @@ import javax.swing.KeyStroke;
 				backY=(int)(screenSize.getHeight())-backHeight;
         	
             	String path = "src/sheepGif.gif";
-            	String path2= "src/sheepGif.gif";
+            	String path2= "src/sheepGifR.gif";
                 
                 sheepA = Toolkit.getDefaultToolkit().createImage(path);
                 sheepB = Toolkit.getDefaultToolkit().createImage(path2);
@@ -244,7 +244,7 @@ import javax.swing.KeyStroke;
     		if (direction==-1)
     		{
     			direction=1;
-    			current=0;
+    			current=1;
     		}
     		getSheep();
     	}
@@ -253,7 +253,7 @@ import javax.swing.KeyStroke;
     		if(direction==1)
     		{
     			direction=-1;
-    			current=1;
+    			current=0;
     		}
     		getSheep();
     	}
