@@ -39,6 +39,8 @@ import javax.swing.KeyStroke;
         private int directY=1;
         private int current = 1;
         
+        private int cloudX=800;
+        private int cloudY=20;
         private int backX;
         private int backY;
         private int backWidth;
@@ -196,7 +198,7 @@ import javax.swing.KeyStroke;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
-            g.drawImage(cloudA,800,20,this);
+            g.drawImage(cloudA,cloudX,cloudY,this);
         }
         private void changeBack()
         {
@@ -210,6 +212,8 @@ import javax.swing.KeyStroke;
         		directY=-1;
         	backX+=directX;
         	backY+=directY;
+        	cloudX+=directX;
+        	cloudY+=directY;
         }
         /**
          * drawSheep - find the sheep height and draw the sheep at the current 
