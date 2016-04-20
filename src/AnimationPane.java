@@ -53,8 +53,8 @@ import javax.swing.KeyStroke;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
         
-        private BufferedImage cloudA;
-        Image dimg=Toolkit.getDefaultToolkit().createImage("src/temp_2.jpg");
+        private Image cloudA;
+        Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky2.png");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
@@ -68,16 +68,8 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				String cloudPath="src/Cloud1.png";
-				File cloudFile=new File(cloudPath);
-				try
-				{
-				cloudA=ImageIO.read(cloudFile);
-				}
-				catch(IOException e)
-				{
-					e.printStackTrace();
-				}
+				String cloudPath="src/Cloud1.gif";
+				cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
 				
 				backX=(int)(screenSize.getWidth())-backWidth;
 				backY=(int)(screenSize.getHeight())-backHeight;
