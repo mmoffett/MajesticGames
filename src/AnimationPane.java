@@ -71,8 +71,7 @@ import javax.swing.KeyStroke;
 				String cloudPath="src/Cloud1.gif";
 				cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
 				
-				backX=(int)(screenSize.getWidth())-backWidth;
-				backY=(int)(screenSize.getHeight())-backHeight;
+				startBack();
         	
             	String path = "src/sheepGif.gif";
             	String path2= "src/sheepGifR.gif";
@@ -98,8 +97,10 @@ import javax.swing.KeyStroke;
                 	@Override
                      public void actionPerformed(ActionEvent e)
                      {
+                		 startBack();
                 		 scores=false;
-                		 animation=true;	 
+                		 animation=true;
+                		 xPos=0;
 	                	 getSheep();	                		               		 
                      }
                 });
@@ -114,7 +115,9 @@ import javax.swing.KeyStroke;
                 	@Override
                 	public void actionPerformed(ActionEvent e)
                 	{
+                		startBack();
                 		scores=true;
+                		first=true;
                 		animation=false;
                 		addHighScores();
                 	}
@@ -215,6 +218,11 @@ import javax.swing.KeyStroke;
     		int y=getHeight() - sheep.get(current).getHeight(paintingChild);
     		first=false;
     		return y;
+        }
+        private void startBack()
+        {
+			backX=(int)(screenSize.getWidth())-backWidth;
+			backY=(int)(screenSize.getHeight())-backHeight;
         }
         private void sheepJump()
         {
