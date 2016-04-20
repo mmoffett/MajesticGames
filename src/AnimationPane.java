@@ -193,7 +193,6 @@ import javax.swing.KeyStroke;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
-            g.drawImage(cloudA,cloudX,cloudY,this);
         }
         private void changeBack()
         {
@@ -232,6 +231,7 @@ import javax.swing.KeyStroke;
         {
         	if(animation==true)
             {
+                g.drawImage(cloudA,cloudX,cloudY,this);
         		if(first)
         		{
         			yPos=getLowY();
@@ -275,9 +275,12 @@ import javax.swing.KeyStroke;
     	}
     	public void moveUp()
     	{
+    		if(animation==true)
+    		{
     		changeBack();
     		sheepJump();
     		repaint();
+    		}
     	}
     	public class ArrowAction extends AbstractAction 
     	{
