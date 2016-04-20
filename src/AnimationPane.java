@@ -34,10 +34,13 @@ import javax.swing.KeyStroke;
 		private Image sheepA;
 		private Image sheepB;
         private int xPos = 0;
+        private int yPos;
         private int direction = 1;
         private int directX=1;
         private int directY=1;
         private int current = 1;
+        private boolean first=true;
+        private boolean jumping=false;
         
         private int cloudX=800;
         private int cloudY=20;
@@ -215,6 +218,18 @@ import javax.swing.KeyStroke;
         	cloudX+=directX;
         	cloudY+=directY;
         }
+        private int getLowY()
+        {
+        	ImageObserver paintingChild = null;
+    		int y=getHeight() - sheep.get(current).getHeight(paintingChild);
+    		first=false;
+    		return y;
+        }
+        private void sheepJump()
+        {
+        		yPos-=10;
+        		repaint();
+        }
         /**
          * drawSheep - find the sheep height and draw the sheep at the current 
          * x position at a height above the bottom such that it moves along the bottom
@@ -225,10 +240,15 @@ import javax.swing.KeyStroke;
         {
         	if(animation==true)
             {
-        		ImageObserver paintingChild = null;
-        		int y = getHeight() - sheep.get(current).getHeight(paintingChild);
-        		g.drawImage(sheep.get(current), xPos, y, this);
+        		if(first)
+        		{
+        			yPos=getLowY();
+        		}
+        		if(yPos<=getLowY()&&jumping==false)
+        			yPos+=10;
+        		g.drawImage(sheep.get(current), xPos, yPos, this);
             }
+        	jumping=false;
         }
         /**
          * drawHighScores - display the high scores
@@ -264,6 +284,7 @@ import javax.swing.KeyStroke;
     	public void moveUp()
     	{
     		changeBack();
+    		sheepJump();
     		repaint();
     	}
     	public class ArrowAction extends AbstractAction 
@@ -289,6 +310,7 @@ import javax.swing.KeyStroke;
                 } 
                 else if (cmd.equalsIgnoreCase("UpArrow")) 
                 {
+                	jumping=true;
                     moveUp();
                 } 
             }
