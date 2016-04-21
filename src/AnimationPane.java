@@ -41,6 +41,8 @@ import javax.swing.KeyStroke;
         private int current = 1;
         private boolean first=true;
         private boolean jumping=false;
+        private boolean grassIn=true;
+        private int grassNum=182;
         
         private int cloudX=800;
         private int cloudY=20;
@@ -55,9 +57,11 @@ import javax.swing.KeyStroke;
         
         private Image cloudA;
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky.png");
+        Image grass=Toolkit.getDefaultToolkit().createImage("src/grass.png");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
+        Vector<Image> cloud =new Vector<Image>();
         /**
          * Constructor for objects of class AnimationPane
          */
@@ -239,7 +243,14 @@ import javax.swing.KeyStroke;
         {
         	if(animation==true)
             {
+        		if(grassIn==true)
+                	g.drawImage(grass,0, ((int)screenSize.getHeight())-grassNum,this);
+                if(grassNum==0)
+                	grassIn=false;
                 g.drawImage(cloudA,cloudX,cloudY,this);
+                g.drawImage(cloudA, cloudX-700, cloudY+300, this);
+                g.drawImage(cloudA, cloudX-600, cloudY-300, this);
+                g.drawImage(cloudA, cloudX-900, cloudY-700, this);
         		if(first)
         		{
         			yPos=getLowY();
@@ -315,6 +326,7 @@ import javax.swing.KeyStroke;
                 {
                 	jumping=true;
                     moveUp();
+                    grassNum--;
                 } 
             }
         }
