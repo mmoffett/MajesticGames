@@ -1,6 +1,8 @@
 import java.awt.Container;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
@@ -22,6 +24,8 @@ public class AddButtons
       JButton button = new JButton(title);
       c.add(button);
       button.addActionListener(listener);
+      Icon i=new ImageIcon("src/purple button.jpg");
+ 	  button.setIcon(i);
     }
     
     
