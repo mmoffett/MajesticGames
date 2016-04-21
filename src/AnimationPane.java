@@ -61,6 +61,8 @@ import javax.swing.KeyStroke;
         
         Vector<Image> sheep =new Vector<Image>();
         Vector<Image> cloud =new Vector<Image>();
+        Vector<Integer> cloudWidth =new Vector<Integer>();
+        Vector<Integer> cloudHeight =new Vector<Integer>();
         /**
          * Constructor for objects of class AnimationPane
          */
@@ -73,6 +75,9 @@ import javax.swing.KeyStroke;
 				
 				String cloudPath="src/Cloud3.png";
 				Image cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
+				ImageIcon temp2=new ImageIcon(cloudA);
+				cloudWidth.add(temp2.getIconWidth());
+				cloudHeight.add(temp2.getIconHeight());
 				cloud.add(cloudA);
 				
 				startBack();
@@ -276,7 +281,7 @@ import javax.swing.KeyStroke;
         private boolean checkForPlatform()
         {
         	boolean platform;
-        	if(xPos>=cloudX-100&&xPos<=cloudX+200&&yPos>=cloudY-200&&yPos<=cloudY+60)
+        	if(xPos>=cloudX-cloudWidth.get(0)/2&&xPos<=cloudX+cloudWidth.get(0)-50&&yPos>=cloudY-cloudHeight.get(0)&&yPos<=cloudY)
         		platform=true;
         	else
         		platform=false;
