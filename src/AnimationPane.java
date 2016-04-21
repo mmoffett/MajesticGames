@@ -54,7 +54,7 @@ import javax.swing.KeyStroke;
         SQLiteJDBC data=new SQLiteJDBC();
         
         private Image cloudA;
-        Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky2.png");
+        Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky.png");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
@@ -68,7 +68,7 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				String cloudPath="src/Cloud1.gif";
+				String cloudPath="src/Cloud3.png";
 				cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
 				
 				startBack();
