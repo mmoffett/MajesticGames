@@ -55,7 +55,6 @@ import javax.swing.KeyStroke;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
         
-        private Image cloudA;
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky.png");
         Image grass=Toolkit.getDefaultToolkit().createImage("src/grass.png");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -73,7 +72,8 @@ import javax.swing.KeyStroke;
 				backHeight=temp.getIconHeight();
 				
 				String cloudPath="src/Cloud3.png";
-				cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
+				Image cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
+				cloud.add(cloudA);
 				
 				startBack();
         	
@@ -247,15 +247,15 @@ import javax.swing.KeyStroke;
                 	g.drawImage(grass,0, ((int)screenSize.getHeight())-grassNum,this);
                 if(grassNum==0)
                 	grassIn=false;
-                g.drawImage(cloudA,cloudX,cloudY,this);
-                g.drawImage(cloudA, cloudX-700, cloudY+300, this);
-                g.drawImage(cloudA, cloudX-600, cloudY-300, this);
-                g.drawImage(cloudA, cloudX-900, cloudY-700, this);
+                g.drawImage(cloud.get(0),cloudX,cloudY,this);
+                g.drawImage(cloud.get(0), cloudX-700, cloudY+300, this);
+                g.drawImage(cloud.get(0), cloudX-600, cloudY-300, this);
+                g.drawImage(cloud.get(0), cloudX-900, cloudY-700, this);
         		if(first)
         		{
         			yPos=getLowY();
         		}
-        		if(yPos<=getLowY()&&jumping==false)
+        		if(yPos<=getLowY()&&jumping==false&&!checkForPlatform())
         			yPos+=10;
         		g.drawImage(sheep.get(current), xPos, yPos, this);
             }
@@ -273,7 +273,15 @@ import javax.swing.KeyStroke;
             	data.output(g);
             }
         }
-        
+        private boolean checkForPlatform()
+        {
+        	boolean platform;
+        	if(xPos>=cloudX-100&&xPos<=cloudX+200&&yPos>=cloudY-200&&yPos<=cloudY+60)
+        		platform=true;
+        	else
+        		platform=false;
+        	return platform;
+        }
     	public void moveRight() 
     	{	
     		if (direction==-1)
