@@ -38,8 +38,8 @@ import javax.swing.KeyStroke;
         private boolean grassIn=true;
         private int grassNum=182;
         
-        private int cloudX=800;
-        private int cloudY=20;
+        private Vector<Integer> cloudX= new Vector<Integer>();
+        private Vector<Integer> cloudY= new Vector<Integer>();
         private int backX;
         private int backY;
         private int backWidth;
@@ -71,6 +71,8 @@ import javax.swing.KeyStroke;
 				cloud=clouds.getClouds();
 				cloudWidth=clouds.getCloudWidths();
 				cloudHeight=clouds.getCloudHeights();
+				cloudX=clouds.getCloudXPos();
+				cloudY=clouds.getCloudYPos();
 				
 				startBack();        	
                 sheep=new Sheep().getSheep();
@@ -224,8 +226,11 @@ import javax.swing.KeyStroke;
         		directY=-1;
         	backX+=directX;
         	backY+=directY;
-        	cloudX+=directX;
-        	cloudY+=directY;
+        	for(int i=0; i<cloudX.size(); i++)
+        	{
+        		cloudX.set(i, cloudX.get(i)+directX);
+        		cloudY.set(i, cloudY.get(i)+directY);
+        	}
         }
         private int getLowY()
         {
@@ -258,10 +263,8 @@ import javax.swing.KeyStroke;
                 	g.drawImage(grass,0, ((int)screenSize.getHeight())-grassNum,this);
                 if(grassNum==0)
                 	grassIn=false;
-                g.drawImage(cloud.get(0),cloudX,cloudY,this);
-                g.drawImage(cloud.get(0), cloudX-700, cloudY+300, this);
-                g.drawImage(cloud.get(0), cloudX-600, cloudY-300, this);
-                g.drawImage(cloud.get(0), cloudX-900, cloudY-700, this);
+                for(int i=0; i<cloudX.size(); i++)
+                	g.drawImage(cloud.get(0),cloudX.get(i),cloudY.get(i),this);
         		if(first)
         		{
         			yPos=getLowY();
@@ -286,11 +289,12 @@ import javax.swing.KeyStroke;
         }
         private boolean checkForPlatform()
         {
-        	boolean platform;
-        	if(xPos>=cloudX-cloudWidth.get(0)/2&&xPos<=cloudX+cloudWidth.get(0)-50&&yPos>=cloudY-cloudHeight.get(0)&&yPos<=cloudY)
-        		platform=true;
-        	else
-        		platform=false;
+        	boolean platform=false;
+        	for(int i=0; i<cloudX.size(); i++)
+        	{
+        		if(xPos>=cloudX.get(i)-cloudWidth.get(0)/2&&xPos<=cloudX.get(i)+cloudWidth.get(0)-50&&yPos>=cloudY.get(i)-cloudHeight.get(0)&&yPos<=cloudY.get(i))
+        			platform=true;
+        	}
         	return platform;
         }
     	public void moveRight() 
