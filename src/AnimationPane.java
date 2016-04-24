@@ -27,8 +27,6 @@ import javax.swing.KeyStroke;
     @SuppressWarnings("serial")
 	public class AnimationPane extends JPanel 
     {
-		private Image sheepA;
-		private Image sheepB;
         private int xPos = 0;
         private int yPos;
         private int direction = 1;
@@ -74,15 +72,8 @@ import javax.swing.KeyStroke;
 				cloudWidth=clouds.getCloudWidths();
 				cloudHeight=clouds.getCloudHeights();
 				
-				startBack();
-        	
-            	String path = "src/sheepGif.gif";
-            	String path2= "src/sheepGifR.gif";
-                
-                sheepA = Toolkit.getDefaultToolkit().createImage(path);
-                sheepB = Toolkit.getDefaultToolkit().createImage(path2);
-                sheep.add(sheepA);
-                sheep.add(sheepB);
+				startBack();        	
+                sheep=new Sheep().getSheep();
                 
                 JPanel buttonPanel = new JPanel();
                 
