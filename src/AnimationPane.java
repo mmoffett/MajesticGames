@@ -69,12 +69,10 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				String cloudPath="src/Cloud3.png";
-				Image cloudA = Toolkit.getDefaultToolkit().createImage(cloudPath);
-				ImageIcon temp2=new ImageIcon(cloudA);
-				cloudWidth.add(temp2.getIconWidth());
-				cloudHeight.add(temp2.getIconHeight());
-				cloud.add(cloudA);
+				Cloud clouds=new Cloud();
+				cloud=clouds.getClouds();
+				cloudWidth=clouds.getCloudWidths();
+				cloudHeight=clouds.getCloudHeights();
 				
 				startBack();
         	
