@@ -290,7 +290,7 @@ import javax.swing.KeyStroke;
         private boolean checkForPlatform()
         {
         	boolean platform=false;
-        	for(int i=0; i<cloudX.size(); i++)
+        	for(int i=0; i<cloudX.size()&&platform==false; i++)
         	{
         		if(xPos>=cloudX.get(i)-cloudWidth.get(0)/2&&xPos<=cloudX.get(i)+cloudWidth.get(0)-50&&yPos>=cloudY.get(i)-cloudHeight.get(0)&&yPos<=cloudY.get(i))
         			platform=true;
