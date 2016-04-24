@@ -106,10 +106,11 @@ import javax.swing.KeyStroke;
                 	@Override
                      public void actionPerformed(ActionEvent e)
                      {
-                		 startBack();
-                		 scores=false;
+                		if(scores)
+                		{
+                			restart();
+                		}
                 		 animation=true;
-                		 xPos=0;
 	                	 getSheep();	                		               		 
                      }
                 });
@@ -143,7 +144,16 @@ import javax.swing.KeyStroke;
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        //Add Pause function here
+                    	if(animation)
+                    		animation=false;
+                    	else if(first==false)
+                    		animation=true;
+                    	else
+                    	{
+                    		restart();
+                		    animation=true;
+                    	    getSheep();	
+	                	}
                     }
                 });
                              
@@ -162,6 +172,15 @@ import javax.swing.KeyStroke;
                 am.put("LeftArrow", new ArrowAction("LeftArrow"));
                 am.put("UpArrow", new ArrowAction("UpArrow"));
                 
+        }
+        
+        public void restart()
+        {
+        	startBack();
+    		scores=false;
+    		xPos=0;
+    		grassIn=true;
+			grassNum=182;
         }
         
         /**
@@ -329,17 +348,24 @@ import javax.swing.KeyStroke;
             {
                 if (cmd.equalsIgnoreCase("LeftArrow")) 
                 {
-                    moveLeft();
+                	if(animation)
+                	{
+                		moveLeft();
+                	}
                 } 
                 else if (cmd.equalsIgnoreCase("RightArrow")) 
                 {
-                    moveRight();
+                	if(animation)
+                		moveRight();
                 } 
                 else if (cmd.equalsIgnoreCase("UpArrow")) 
                 {
-                	jumping=true;
-                    moveUp();
-                    grassNum--;
+                	if(animation)
+                	{
+                		jumping=true;
+                		moveUp();
+                		grassNum--;
+                	}
                 } 
             }
         }
