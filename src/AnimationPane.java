@@ -95,7 +95,7 @@ import javax.swing.KeyStroke;
                 
                 AddButtons b=new AddButtons();
                                
-                b.addButton(buttonPanel, "Start", new ActionListener()
+                b.addButton(buttonPanel, "src/StartButton.jpg", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -113,7 +113,7 @@ import javax.swing.KeyStroke;
 	                	 getSheep();	                		               		 
                      }
                 });
-                b.addButton(buttonPanel, "High Scores", new ActionListener()
+                b.addButton(buttonPanel, "src/HighScoresButton.png", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -132,7 +132,7 @@ import javax.swing.KeyStroke;
                 	}
                 	
                 });
-                b.addButton(buttonPanel, "Exit", new ActionListener()
+                b.addButton(buttonPanel, "src/PauseButton.jpg", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -143,7 +143,7 @@ import javax.swing.KeyStroke;
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        System.exit(0);
+                        //Add Pause function here
                     }
                 });
                              

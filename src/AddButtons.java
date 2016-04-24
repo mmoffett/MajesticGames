@@ -19,12 +19,12 @@ public class AddButtons
      * @param title      the button title
      * @param listener   the action listener for the button
      */
-    public void addButton(Container c, String title, ActionListener listener) 
+    public void addButton(Container c, String file, ActionListener listener) 
     {
-      JButton button = new JButton(title);
+      JButton button = new JButton();
       c.add(button);
       button.addActionListener(listener);
-      Icon i=new ImageIcon("src/purple button.jpg");
+      Icon i=new ImageIcon(file);
  	  button.setIcon(i);
     }
     
