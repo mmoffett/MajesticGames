@@ -26,6 +26,7 @@ public class AddButtons
       button.addActionListener(listener);
       Icon i=new ImageIcon(file);
  	  button.setIcon(i);
+ 	  button.setFocusable(false);
     }
     
     
