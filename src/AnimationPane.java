@@ -67,7 +67,7 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				Cloud clouds=new Cloud();
+				Cloud clouds=new Cloud(backWidth, backHeight);
 				cloud=clouds.getClouds();
 				cloudWidth=clouds.getCloudWidths();
 				cloudHeight=clouds.getCloudHeights();
