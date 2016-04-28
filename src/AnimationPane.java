@@ -83,7 +83,7 @@ import javax.swing.KeyStroke;
                 
                 AddButtons b=new AddButtons();
                                
-                b.addButton(buttonPanel, "src/StartButton.jpg", new ActionListener()
+                b.addButton(buttonPanel, "src/StartButton.png", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
@@ -121,7 +121,7 @@ import javax.swing.KeyStroke;
                 	}
                 	
                 });
-                b.addButton(buttonPanel, "src/PauseButton.jpg", new ActionListener()
+                b.addButton(buttonPanel, "src/PauseButton.png", new ActionListener()
                 {
                 	/**
                      * actionPerformed - an overridden version of the actionPerformed() function from 
