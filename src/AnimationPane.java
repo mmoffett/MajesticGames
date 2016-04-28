@@ -79,6 +79,7 @@ import javax.swing.KeyStroke;
                 
                 JPanel buttonPanel = new JPanel();
                 
+                buttonPanel.setOpaque(false);
                 
                 AddButtons b=new AddButtons();
                                

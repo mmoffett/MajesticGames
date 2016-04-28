@@ -22,6 +22,8 @@ public class AddButtons
     public void addButton(Container c, String file, ActionListener listener) 
     {
       JButton button = new JButton();
+      button.setContentAreaFilled(false);
+      button.setBorderPainted(false);
       c.add(button);
       button.addActionListener(listener);
       Icon i=new ImageIcon(file);
