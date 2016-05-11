@@ -45,6 +45,9 @@ import javax.swing.KeyStroke;
         private int backWidth;
         private int backHeight;
         
+        private int score=0;
+        private boolean repeat=false;
+        
         private boolean animation=false;
         private boolean scores=false;
         SQLiteJDBC data=new SQLiteJDBC();
@@ -298,6 +301,14 @@ import javax.swing.KeyStroke;
         	{
         		if(xPos>=cloudX.get(i)-cloudWidth.get(0)/2&&xPos<=cloudX.get(i)+cloudWidth.get(0)-50&&yPos>=cloudY.get(i)-cloudHeight.get(0)&&yPos<=cloudY.get(i))
         			platform=true;
+        	}
+        	if(!platform)
+        		repeat=false;
+        	if (platform&&!repeat)
+        	{
+        		score++;
+            	System.out.println(score);
+        		repeat=true;
         	}
         	return platform;
         }
