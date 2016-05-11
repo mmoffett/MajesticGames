@@ -55,14 +55,17 @@ public class Cloud
 	private void makeCloudPos()
 	{
 		Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-		for(int i=300; i>-backHeight+300 ; i=i-205)
+		System.out.println(screenSize.getHeight());
+		for(int i=300; i>-backHeight+400 ; i=i-400)
 		{
-			for(int k=0; k<4; k++)
+			for(int k=0; k<2; k++)
 			{
-				int x=(int)screenSize.getWidth()-widths.get(0)-(rand.nextInt((int) backWidth));
-				cloudXPos.add(x);
-				cloudYPos.add(i-rand.nextInt(300));
+				int x=(int)screenSize.getWidth()-widths.get(0)-(rand.nextInt((int) screenSize.getWidth()));///4)+(k*backWidth));
+				cloudXPos.add(x);	
+				cloudYPos.add(i);//-rand.nextInt(300));
+				//System.out.println(x);
 			}
 		}
 	}
 }
+

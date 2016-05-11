@@ -217,19 +217,19 @@ import javax.swing.KeyStroke;
         }
         private void changeBack()
         {
-        	if(backX==(int)(screenSize.getWidth())-backWidth)
-        		directX=1;
-        	else if(backX==0)
-        		directX=-1;
+        	//if(backX==(int)(screenSize.getWidth())-backWidth)
+        		//directX=1;
+        	//else if(backX==0)
+        	//	directX=-1;
         	if(backY==(int)(screenSize.getHeight())-backHeight)
         		directY=1;
         	else if(backY==0)
         		directY=-1;
-        	backX+=directX;
+        	//backX+=directX;
         	backY+=directY;
         	for(int i=0; i<cloudX.size(); i++)
         	{
-        		cloudX.set(i, cloudX.get(i)+directX);
+        	//	cloudX.set(i, cloudX.get(i)+directX);
         		cloudY.set(i, cloudY.get(i)+directY);
         	}
         }
