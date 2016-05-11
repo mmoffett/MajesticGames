@@ -36,7 +36,7 @@ import javax.swing.KeyStroke;
         private boolean first=true;
         private boolean jumping=false;
         private boolean grassIn=true;
-        private int grassNum=182;
+        private int grassNum;
         
         private Vector<Integer> cloudX= new Vector<Integer>();
         private Vector<Integer> cloudY= new Vector<Integer>();
@@ -67,12 +67,10 @@ import javax.swing.KeyStroke;
 				backWidth=temp.getIconWidth();
 				backHeight=temp.getIconHeight();
 				
-				Cloud clouds=new Cloud(backWidth, backHeight);
-				cloud=clouds.getClouds();
-				cloudWidth=clouds.getCloudWidths();
-				cloudHeight=clouds.getCloudHeights();
-				cloudX=clouds.getCloudXPos();
-				cloudY=clouds.getCloudYPos();
+				ImageIcon temp2=new ImageIcon(grass);
+				grassNum=temp2.getIconHeight();
+				
+				getClouds();
 				
 				startBack();        	
                 sheep=new Sheep().getSheep();
@@ -166,6 +164,7 @@ import javax.swing.KeyStroke;
         
         public void restart()
         {
+        	getClouds();
         	startBack();
     		scores=false;
     		xPos=0;
@@ -247,6 +246,7 @@ import javax.swing.KeyStroke;
         }
         private void sheepJump()
         {
+        	if(yPos>=10)
         		yPos-=10;
         		repaint();
         }
@@ -287,6 +287,15 @@ import javax.swing.KeyStroke;
             {
             	data.output(g);
             }
+        }
+        private void getClouds()
+        {
+        	Cloud clouds=new Cloud(backWidth, backHeight);
+			cloud=clouds.getClouds();
+			cloudWidth=clouds.getCloudWidths();
+			cloudHeight=clouds.getCloudHeights();
+			cloudX=clouds.getCloudXPos();
+			cloudY=clouds.getCloudYPos();
         }
         private boolean checkForPlatform()
         {
