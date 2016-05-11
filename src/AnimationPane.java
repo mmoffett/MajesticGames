@@ -149,7 +149,9 @@ import javax.swing.KeyStroke;
     		ImageIcon temp=new ImageIcon(dimg);
 			backWidth=temp.getIconWidth();
 			backHeight=temp.getIconHeight();
-			
+        }
+        private void startGrass()
+        {
 			ImageIcon temp2=new ImageIcon(grass);
 			grassNum=temp2.getIconHeight();
         }
@@ -160,7 +162,7 @@ import javax.swing.KeyStroke;
     		scores=false;
     		xPos=0;
     		grassIn=true;
-			grassNum=182;
+			startGrass();
         }
         
         /**
@@ -234,6 +236,7 @@ import javax.swing.KeyStroke;
         {
 			backX=(int)(screenSize.getWidth())-backWidth;
 			backY=(int)(screenSize.getHeight())-backHeight;
+			startGrass();
         }
         private void sheepJump()
         {
