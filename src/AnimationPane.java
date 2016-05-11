@@ -146,22 +146,10 @@ import javax.swing.KeyStroke;
                 
                 add(buttonPanel, BorderLayout.SOUTH);
            	 
-                //Arrow Key reading
-                InputMap im = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
-                ActionMap am = this.getActionMap();
-
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
-                im.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0) ,"Space");
-
-                am.put("RightArrow", new ArrowAction("RightArrow"));
-                am.put("LeftArrow", new ArrowAction("LeftArrow"));
-                am.put("UpArrow", new ArrowAction("UpArrow"));
-                am.put("Space", new ArrowAction("Space"));
+                startKeys();
 
         }
-        
+               
         public void restart()
         {
         	getClouds();
@@ -334,6 +322,23 @@ import javax.swing.KeyStroke;
     		repaint();
     		}
     	}
+    	
+    	 public void startKeys()
+         {
+         	//Arrow Key reading
+             InputMap im = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+             ActionMap am = this.getActionMap();
+
+             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
+             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
+             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
+             im.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0) ,"Space");
+
+             am.put("RightArrow", new ArrowAction("RightArrow"));
+             am.put("LeftArrow", new ArrowAction("LeftArrow"));
+             am.put("UpArrow", new ArrowAction("UpArrow"));
+             am.put("Space", new ArrowAction("Space"));
+         }
     	public class ArrowAction extends AbstractAction 
     	{
 
