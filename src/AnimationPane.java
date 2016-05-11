@@ -62,94 +62,97 @@ import javax.swing.KeyStroke;
          */
         public AnimationPane()
         {
-        		//temporarily establishes an image icon to find the height and width of image
-        		ImageIcon temp=new ImageIcon(dimg);
-				backWidth=temp.getIconWidth();
-				backHeight=temp.getIconHeight();
-				
-				ImageIcon temp2=new ImageIcon(grass);
-				grassNum=temp2.getIconHeight();
-				
+        		establishImageProperties();
 				getClouds();
 				
 				startBack();        	
                 sheep=new Sheep().getSheep();
-                
-                JPanel buttonPanel = new JPanel();
-                
-                buttonPanel.setOpaque(false);
-                
-                AddButtons b=new AddButtons();
-                               
-                b.addButton(buttonPanel, "src/StartButton.png", new ActionListener()
-                {
-                	/**
-                     * actionPerformed - an overridden version of the actionPerformed() function from 
-                     * ActionListener interface that is invoked when an action occurs
-                     * 
-                     * @param  e    an event that indicates that something has occurred
-                     */ 
-                	@Override
-                     public void actionPerformed(ActionEvent e)
-                     {
-                		if(scores)
-                		{
-                			restart();
-                		}
-                		 animation=true;
-	                	 getSheep();	                		               		 
-                     }
-                });
-                b.addButton(buttonPanel, "src/HighScoresButton.png", new ActionListener()
-                {
-                	/**
-                     * actionPerformed - an overridden version of the actionPerformed() function from 
-                     * ActionListener interface that is invoked when an action occurs
-                     * 
-                     * @param  e    an event that indicates that something has occurred
-                     */
-                	@Override
-                	public void actionPerformed(ActionEvent e)
-                	{
-                		startBack();
-                		scores=true;
-                		first=true;
-                		animation=false;
-                		addHighScores();
-                	}
-                	
-                });
-                b.addButton(buttonPanel, "src/PauseButton.png", new ActionListener()
-                {
-                	/**
-                     * actionPerformed - an overridden version of the actionPerformed() function from 
-                     * ActionListener interface that is invoked when an action occurs
-                     * 
-                     * @param  e    an event that indicates that something has occurred
-                     */
-                    @Override
-                    public void actionPerformed(ActionEvent e)
-                    {
-                    	if(animation)
-                    		animation=false;
-                    	else if(first==false)
-                    		animation=true;
-                    	else
-                    	{
-                    		restart();
-                		    animation=true;
-                    	    getSheep();	
-	                	}
-                    }
-                });
-                             
-                
+                                
+                JPanel buttonPanel = createButtonPanel();               
                 add(buttonPanel, BorderLayout.SOUTH);
            	 
                 startKeys();
-
         }
-               
+        private JPanel createButtonPanel()
+        {
+        	JPanel buttonPanel = new JPanel();
+	        buttonPanel.setOpaque(false);       
+	        AddButtons b=new AddButtons();
+	                       
+	        b.addButton(buttonPanel, "src/StartButton.png", new ActionListener()
+	        {
+	        	/**
+	             * actionPerformed - an overridden version of the actionPerformed() function from 
+	             * ActionListener interface that is invoked when an action occurs
+	             * 
+	             * @param  e    an event that indicates that something has occurred
+	             */ 
+	        	@Override
+	             public void actionPerformed(ActionEvent e)
+	             {
+	        		if(scores)
+	        		{
+	        			restart();
+	        		}
+	        		 animation=true;
+	            	 getSheep();	                		               		 
+	             }
+	        });
+	        b.addButton(buttonPanel, "src/HighScoresButton.png", new ActionListener()
+	        {
+	        	/**
+	             * actionPerformed - an overridden version of the actionPerformed() function from 
+	             * ActionListener interface that is invoked when an action occurs
+	             * 
+	             * @param  e    an event that indicates that something has occurred
+	             */
+	        	@Override
+	        	public void actionPerformed(ActionEvent e)
+	        	{
+	        		startBack();
+	        		scores=true;
+	        		first=true;
+	        		animation=false;
+	        		addHighScores();
+	        	}
+	        	
+	        });
+	        b.addButton(buttonPanel, "src/PauseButton.png", new ActionListener()
+	        {
+	        	/**
+	             * actionPerformed - an overridden version of the actionPerformed() function from 
+	             * ActionListener interface that is invoked when an action occurs
+	             * 
+	             * @param  e    an event that indicates that something has occurred
+	             */
+	            @Override
+	            public void actionPerformed(ActionEvent e)
+	            {
+	            	if(animation)
+	            		animation=false;
+	            	else if(first==false)
+	            		animation=true;
+	            	else
+	            	{
+	            		restart();
+	        		    animation=true;
+	            	    getSheep();	
+	            	}
+	            }
+	        });
+	        return buttonPanel;
+        }
+        
+        public void establishImageProperties()
+        {
+        	//temporarily establishes an image icon to find the height and width of image
+    		ImageIcon temp=new ImageIcon(dimg);
+			backWidth=temp.getIconWidth();
+			backHeight=temp.getIconHeight();
+			
+			ImageIcon temp2=new ImageIcon(grass);
+			grassNum=temp2.getIconHeight();
+        }
         public void restart()
         {
         	getClouds();
