@@ -37,7 +37,10 @@ import javax.swing.KeyStroke;
         private boolean first=true;
         private boolean jumping=false;
         private boolean grassIn=true;
+        private boolean levelingUp=false;
         private int grassNum;
+        
+        private int time=0;
         
         private Vector<Integer> cloudX= new Vector<Integer>();
         private Vector<Integer> cloudY= new Vector<Integer>();
@@ -55,6 +58,7 @@ import javax.swing.KeyStroke;
         
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky.png");
         Image grass=Toolkit.getDefaultToolkit().createImage("src/grass.png");
+        Image levelChange=Toolkit.getDefaultToolkit().createImage("src/himym.gif");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
@@ -222,22 +226,17 @@ import javax.swing.KeyStroke;
             g.setColor(Color.white);
             drawSheep(g);
             drawHighScores(g);
+            levelUp(g);
         }
         private void changeBack()
         {
-        	//if(backX==(int)(screenSize.getWidth())-backWidth)
-        		//directX=1;
-        	//else if(backX==0)
-        	//	directX=-1;
         	if(backY==(int)(screenSize.getHeight())-backHeight)
         		directY=1;
         	else if(backY==0)
-        		directY=-1;
-        	//backX+=directX;
+        		levelingUp=true;
         	backY+=directY;
         	for(int i=0; i<cloudX.size(); i++)
         	{
-        	//	cloudX.set(i, cloudX.get(i)+directX);
         		cloudY.set(i, cloudY.get(i)+directY);
         	}
         }
@@ -285,6 +284,29 @@ import javax.swing.KeyStroke;
         		g.drawImage(sheep.get(current), xPos, yPos, this);
             }
         	jumping=false;
+        }
+        private void levelUp(Graphics g)
+        {
+        	if(levelingUp&&time<50)
+        	{
+        		ImageIcon temp=new ImageIcon(levelChange);
+        		int width=temp.getIconWidth();
+        		animation=false;
+        		g.drawImage(levelChange, (int)(screenSize.getWidth()/2)-((int)width/2), 200, this);
+        		time++;
+        	}
+        	else if(levelingUp&&!animation)
+        	{
+        		time=0;
+        		score=score+100;
+        		levelingUp=false;
+        		backY=(int)(screenSize.getHeight())-backHeight;
+        		getClouds();
+        		grassIn=true;
+        		startGrass();
+        		yPos=getLowY();
+        		animation=true;
+        	}
         }
         /**
          * drawHighScores - display the high scores
