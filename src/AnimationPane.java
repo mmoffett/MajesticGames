@@ -214,6 +214,8 @@ import javax.swing.KeyStroke;
         }
         public void addHighScores()
         {
+        	
+        	data.addHighScore("Marissa",200,5);
         	repaint();
         }
         
