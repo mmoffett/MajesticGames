@@ -14,6 +14,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
@@ -60,6 +61,8 @@ import javax.swing.KeyStroke;
         Vector<Image> cloud =new Vector<Image>();
         Vector<Integer> cloudWidth =new Vector<Integer>();
         Vector<Integer> cloudHeight =new Vector<Integer>();
+        
+        JLabel scoreKeeper;
         /**
          * Constructor for objects of class AnimationPane
          */
@@ -73,8 +76,18 @@ import javax.swing.KeyStroke;
                                 
                 JPanel buttonPanel = createButtonPanel();               
                 add(buttonPanel, BorderLayout.SOUTH);
+                
+                makeScoreKeeper();
+                add(scoreKeeper);
            	 
                 startKeys();
+        }
+        private void makeScoreKeeper()
+        {
+            scoreKeeper = new JLabel("Score: " + score);
+            scoreKeeper.setForeground(new Color(0x556B2F));
+            scoreKeeper.setOpaque(true);
+            scoreKeeper.setBackground(new Color(255, 255, 224, 100));
         }
         private JPanel createButtonPanel()
         {
@@ -307,7 +320,7 @@ import javax.swing.KeyStroke;
         	if (platform&&!repeat)
         	{
         		score++;
-            	System.out.println(score);
+        		scoreKeeper.setText("Score: "+score);
         		repeat=true;
         	}
         	return platform;
