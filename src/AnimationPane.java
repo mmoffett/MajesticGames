@@ -40,6 +40,8 @@ import javax.swing.KeyStroke;
         private boolean levelingUp=false;
         private int grassNum;
         
+        private int fallDist=0;
+        
         private int time=0;
         
         private Vector<Integer> cloudX= new Vector<Integer>();
@@ -110,10 +112,11 @@ import javax.swing.KeyStroke;
 	        	@Override
 	             public void actionPerformed(ActionEvent e)
 	             {
-	        		if(scores)
+	        		if(scores||first)
 	        		{
 	        			restart();
 	        		}
+	        		fallDist=0;
 	        		 animation=true;
 	            	 getSheep();	                		               		 
 	             }
@@ -183,6 +186,7 @@ import javax.swing.KeyStroke;
     		xPos=0;
     		grassIn=true;
 			startGrass();
+			fallDist=0;
         }
         
         /**
@@ -231,8 +235,8 @@ import javax.swing.KeyStroke;
         private void changeBack()
         {
         	if(backY==(int)(screenSize.getHeight())-backHeight)
-        		directY=1;
-        	else if(backY==0)
+        		directY=2;
+        	else if(backY>=0)
         		levelingUp=true;
         	backY+=directY;
         	for(int i=0; i<cloudX.size(); i++)
@@ -269,6 +273,7 @@ import javax.swing.KeyStroke;
         {
         	if(animation==true)
             {
+            	checkLoss();
         		if(grassIn==true)
                 	g.drawImage(grass,0, ((int)screenSize.getHeight())-grassNum,this);
                 if(grassNum==0)
@@ -280,14 +285,17 @@ import javax.swing.KeyStroke;
         			yPos=getLowY();
         		}
         		if(yPos<=getLowY()&&jumping==false&&!checkForPlatform())
+        		{
         			yPos+=10;
+        			fallDist+=1;
+        		}
         		g.drawImage(sheep.get(current), xPos, yPos, this);
             }
         	jumping=false;
         }
         private void levelUp(Graphics g)
         {
-        	if(levelingUp&&time<50)
+        	if(levelingUp&&time<20)
         	{
         		ImageIcon temp=new ImageIcon(levelChange);
         		int width=temp.getIconWidth();
@@ -299,6 +307,7 @@ import javax.swing.KeyStroke;
         	{
         		time=0;
         		score=score+100;
+        		scoreKeeper.setText("Score: "+score);
         		levelingUp=false;
         		backY=(int)(screenSize.getHeight())-backHeight;
         		getClouds();
@@ -306,6 +315,14 @@ import javax.swing.KeyStroke;
         		startGrass();
         		yPos=getLowY();
         		animation=true;
+        	}
+        }
+        private void checkLoss()
+        {
+        	if(fallDist>=6)
+        	{
+        		animation=false;
+        		first=true;
         	}
         }
         /**
@@ -335,7 +352,10 @@ import javax.swing.KeyStroke;
         	for(int i=0; i<cloudX.size()&&platform==false; i++)
         	{
         		if(xPos>=cloudX.get(i)-cloudWidth.get(0)/2&&xPos<=cloudX.get(i)+cloudWidth.get(0)-50&&yPos>=cloudY.get(i)-cloudHeight.get(0)&&yPos<=cloudY.get(i))
+        		{
         			platform=true;
+        			fallDist=0;
+        		}
         	}
         	if(!platform)
         		repeat=false;
