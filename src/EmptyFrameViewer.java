@@ -23,7 +23,7 @@ public class EmptyFrameViewer
         frame.getContentPane().setBackground(Color.black);
         
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        //frame.setSize(900,900);
+
         frame.setVisible(true);
         frame.setTitle("Majestic Games");
     }
