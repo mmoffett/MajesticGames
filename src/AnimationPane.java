@@ -284,7 +284,7 @@ import javax.swing.KeyStroke;
         		}
         		if(yPos<=getLowY()&&jumping==false&&!checkForPlatform())
         		{
-        			yPos+=10;
+        			yPos+=20;
         			fallDist+=1;
         		}
         		g.drawImage(sheep.get(current), xPos, yPos, this);
@@ -318,7 +318,7 @@ import javax.swing.KeyStroke;
         }
         private void checkLoss()
         {
-        	if(fallDist>=6)
+        	if(fallDist>=10)
         	{
         		animation=false;
         		first=true;
@@ -441,6 +441,12 @@ import javax.swing.KeyStroke;
                 		jumping=true;
                 		moveUp();
                 		grassNum--;
+                		if(fallDist>=3)
+                			fallDist-=3;
+                		else if(fallDist==2)
+                			fallDist-=2;
+                		else if(fallDist==1)
+                			fallDist-=1;
                 	}
                 } 
             }
