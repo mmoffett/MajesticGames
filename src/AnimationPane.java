@@ -52,6 +52,7 @@ import javax.swing.KeyStroke;
         private int backHeight;
         
         private int score=0;
+        private int level=1;
         private boolean repeat=false;
         
         private boolean animation=false;
@@ -136,7 +137,6 @@ import javax.swing.KeyStroke;
 	        		scores=true;
 	        		first=true;
 	        		animation=false;
-	        		addHighScores();
 	        	}
 	        	
 	        });
@@ -212,13 +212,7 @@ import javax.swing.KeyStroke;
             repaint();
         	}
         }
-        public void addHighScores()
-        {
-        	
-        	data.addHighScore("Marissa",200,5);
-        	repaint();
-        }
-        
+      
         /**
          * paintComponent - draw the screen with the current setting
          * 
@@ -309,6 +303,7 @@ import javax.swing.KeyStroke;
         	{
         		time=0;
         		score=score+100;
+        		level++;
         		scoreKeeper.setText("Score: "+score);
         		levelingUp=false;
         		backY=(int)(screenSize.getHeight())-backHeight;
@@ -325,6 +320,7 @@ import javax.swing.KeyStroke;
         	{
         		animation=false;
         		first=true;
+        		HighScores high=new HighScores(score, level);
         	}
         }
         /**
