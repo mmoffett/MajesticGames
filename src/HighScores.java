@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,21 +12,27 @@ import javax.swing.JTextArea;
 
 public class HighScores extends JPanel
 {
-	int score1;
-	int level1;
-	public HighScores(final int score, final int level)
+	final int score1;
+	final int level1;
+	final JFrame f;
+	JButton button;
+	JTextArea a;
+	public HighScores(int score, int level)
 	{
-		final JFrame frame1= new JFrame("Score Entry");
-        frame1.setLayout(new BorderLayout());
-		frame1.pack();
-		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame1.setLocationRelativeTo(null);
-        frame1.setVisible(true);
-        frame1.setSize(400,100);	
-		
+		f = new JFrame("Score Entry");
+        f.setLayout(new BorderLayout());
+		f.pack();
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        f.setSize(400,100);	
+        
 		score1=score;
 		level1=level;
-        
+		makePanel();
+	}
+	private void makePanel()
+	{
         JPanel buttonPanel = new JPanel();
         buttonPanel.setOpaque(false);       
         
@@ -34,38 +41,41 @@ public class HighScores extends JPanel
         NameEntry.setOpaque(true);
         NameEntry.setBackground(new Color(255, 255, 224, 100));
         
-        final JTextArea a = new JTextArea("     ");
-        
-        
-        ActionListener listener=new ActionListener()
-        {
-        	/**
-             * actionPerformed - an overridden version of the actionPerformed() function from 
-             * ActionListener interface that is invoked when an action occurs
-             * 
-             * @param  e    an event that indicates that something has occurred
-             */ 
-        	@Override
-             public void actionPerformed(ActionEvent e)
-             {
-        		final String name = a.getText();
-        		SQLiteJDBC data=new SQLiteJDBC();
-        		data.addHighScore(name, score,level); 
-        		frame1.dispose();
-             }
-        };
-        
-        JButton button = new JButton("Enter");
+        a = new JTextArea("     ");
+               
+        button = new JButton("Enter");
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
-        button.addActionListener(listener);
+        button.addActionListener(makeListener());
         button.setFocusable(true);
         
         buttonPanel.add(NameEntry);
         buttonPanel.add(a);
         buttonPanel.add(button);
         
-        frame1.add(buttonPanel, BorderLayout.SOUTH);
-	}
 
+        f.add(buttonPanel, BorderLayout.SOUTH);      
+	}
+        
+    private ActionListener makeListener()
+    {
+	    ActionListener listener=new ActionListener()
+	    {
+	     	/**
+	        * actionPerformed - an overridden version of the actionPerformed() function from 
+	        * ActionListener interface that is invoked when an action occurs
+	        * 
+	        * @param  e    an event that indicates that something has occurred
+	        */ 
+	      	@Override
+	        public void actionPerformed(ActionEvent e)
+	        {
+	      		final String name = a.getText();
+	       		SQLiteJDBC data=new SQLiteJDBC();
+	       		data.addHighScore(name, score1,level1); 
+	       		f.dispose();
+	        }
+	   };
+	   return listener;
+        }
 }
