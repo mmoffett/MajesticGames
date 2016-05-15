@@ -188,6 +188,7 @@ import javax.swing.KeyStroke;
 			startGrass();
 			fallDist=0;
 			score=0;
+			scoreKeeper.setText("Score: "+score);
 			level=1;
         }
         
