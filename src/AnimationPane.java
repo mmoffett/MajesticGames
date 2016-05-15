@@ -258,8 +258,8 @@ import javax.swing.KeyStroke;
         }
         private void sheepJump()
         {
-        	if(yPos>=10)
-        		yPos-=10;
+        	if(yPos>=20)
+        		yPos-=20;
         		repaint();
         }
         /**
@@ -319,7 +319,7 @@ import javax.swing.KeyStroke;
         }
         private void checkLoss()
         {
-        	if(fallDist>=10)
+        	if(fallDist>=15)
         	{
         		animation=false;
         		first=true;
@@ -442,12 +442,8 @@ import javax.swing.KeyStroke;
                 		jumping=true;
                 		moveUp();
                 		grassNum--;
-                		if(fallDist>=3)
-                			fallDist-=3;
-                		else if(fallDist==2)
-                			fallDist-=2;
-                		else if(fallDist==1)
-                			fallDist-=1;
+                		for(int i=0;i<=4&&fallDist>=0; i++)
+                		   fallDist--;
                 	}
                 } 
             }
