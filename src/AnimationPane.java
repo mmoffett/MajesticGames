@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
@@ -40,6 +41,8 @@ import javax.swing.KeyStroke;
         private boolean levelingUp=false;
         private int grassNum;
         
+        private int prob=700;
+        
         private int fallDist=0;
         
         private int time=0;
@@ -62,10 +65,13 @@ import javax.swing.KeyStroke;
         Image dimg=Toolkit.getDefaultToolkit().createImage("src/sky.png");
         Image grass=Toolkit.getDefaultToolkit().createImage("src/grass.png");
         Image levelChange=Toolkit.getDefaultToolkit().createImage("src/himym.gif");
+        Image obstacleImage=Toolkit.getDefaultToolkit().createImage("src/clock.gif");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         Vector<Image> sheep =new Vector<Image>();
         Vector<Image> cloud =new Vector<Image>();
+        Vector<Integer> obstacleX=new Vector<Integer>();
+        Vector<Integer> obstacleY=new Vector<Integer>();
         Vector<Integer> cloudWidth =new Vector<Integer>();
         Vector<Integer> cloudHeight =new Vector<Integer>();
         
@@ -229,6 +235,7 @@ import javax.swing.KeyStroke;
             drawSheep(g);
             drawHighScores(g);
             levelUp(g);
+            makeObstacle(g);
         }
         private void changeBack()
         {
@@ -346,6 +353,32 @@ import javax.swing.KeyStroke;
 			cloudHeight=clouds.getCloudHeights();
 			cloudX=clouds.getCloudXPos();
 			cloudY=clouds.getCloudYPos();
+        }
+        private void makeObstacle(Graphics g) 
+        {
+        	if(checkForObstacle())
+        	{
+        		prob=700;
+        		obstacleX.add(0);
+        		obstacleY.add(0);
+        	}
+        	for(int i=0;i<obstacleX.size();i++)
+        	{
+        		obstacleX.set(i, obstacleX.get(i)+(5*level));
+        		if(jumping)
+        		{
+        			obstacleY.set(i,obstacleY.get(i)+20);
+        		}
+        		g.drawImage(obstacleImage, obstacleX.get(i), obstacleY.get(i), this);
+        	}
+        		
+        }
+        private boolean checkForObstacle()
+        {
+        	Random rand=new Random();
+        	int k=rand.nextInt(prob);
+        	prob--;
+        	return k==1;     	
         }
         private boolean checkForPlatform()
         {
