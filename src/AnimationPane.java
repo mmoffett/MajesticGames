@@ -117,7 +117,6 @@ import javax.swing.KeyStroke;
 	        		{
 	        			restart();
 	        		}
-	        		fallDist=0;
 	        		 animation=true;
 	            	 getSheep();	                		               		 
 	             }
@@ -133,10 +132,10 @@ import javax.swing.KeyStroke;
 	        	@Override
 	        	public void actionPerformed(ActionEvent e)
 	        	{
-	        		startBack();
 	        		scores=true;
 	        		first=true;
 	        		animation=false;
+	        		repaint();
 	        	}
 	        	
 	        });
@@ -323,6 +322,7 @@ import javax.swing.KeyStroke;
         	{
         		animation=false;
         		first=true;
+        		scores=true;
         		HighScores high=new HighScores(score, level);
         	}
         }

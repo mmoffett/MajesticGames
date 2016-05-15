@@ -79,18 +79,19 @@ public class SQLiteJDBC
 
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM HighScore ORDER BY score DESC" );
-            for (int y=50; rs.next(); y=y+20 ) {
+            int i=1;
+            for (int y=50; rs.next(); y=y+20 ) 
+            {
                int id = rs.getInt("id");
                String  ScorerName = rs.getString("ScorerName");
                int level  = rs.getInt("levelTo");
                int  score = rs.getInt("score");
-               //double gameLength = rs.getDouble("GameLength");
-               g.drawString( "ID = " + id , 20, y);
-               g.drawString("NAME = " + ScorerName, 100, y );
-               g.drawString( "Level Reached = " + level, 190, y);
-               g.drawString( "SCORE = " + score, 320, y);
-               //g.drawString( "Game Length = " + gameLength, 400, y);
-               
+               g.drawString("Rank= "+ i,20,y);
+               g.drawString( "ID = " + id , 100, y);
+               g.drawString("NAME = " + ScorerName, 180, y );
+               g.drawString( "Level Reached = " + level, 330, y);
+               g.drawString( "SCORE = " + score, 480, y);
+               i++;
             }
             rs.close();
             stmt.close();
