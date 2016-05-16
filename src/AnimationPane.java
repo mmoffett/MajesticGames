@@ -41,6 +41,8 @@ import javax.swing.KeyStroke;
         private boolean levelingUp=false;
         private int grassNum;
         
+    	Random rand=new Random();
+        
         private int prob=700;
         
         private int fallDist=0;
@@ -360,22 +362,17 @@ import javax.swing.KeyStroke;
         	{
         		prob=700;
         		obstacleX.add(0);
-        		obstacleY.add(0);
+        		obstacleY.add(rand.nextInt((int)screenSize.getHeight()));
         	}
         	for(int i=0;i<obstacleX.size();i++)
         	{
         		obstacleX.set(i, obstacleX.get(i)+(5*level));
-        		if(jumping)
-        		{
-        			obstacleY.set(i,obstacleY.get(i)+20);
-        		}
         		g.drawImage(obstacleImage, obstacleX.get(i), obstacleY.get(i), this);
         	}
         		
         }
         private boolean checkForObstacle()
         {
-        	Random rand=new Random();
         	int k=rand.nextInt(prob);
         	prob--;
         	return k==1;     	
