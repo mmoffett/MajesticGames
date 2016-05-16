@@ -55,6 +55,8 @@ import javax.swing.KeyStroke;
         private int backY;
         private int backWidth;
         private int backHeight;
+        private int obstacleH;
+        private int obstacleW;
         
         private int score=0;
         private int level=1;
@@ -179,6 +181,9 @@ import javax.swing.KeyStroke;
     		ImageIcon temp=new ImageIcon(dimg);
 			backWidth=temp.getIconWidth();
 			backHeight=temp.getIconHeight();
+			ImageIcon temp2=new ImageIcon(obstacleImage);
+			obstacleW=temp2.getIconWidth();
+			obstacleH=temp2.getIconHeight();
         }
         private void startGrass()
         {
@@ -327,7 +332,7 @@ import javax.swing.KeyStroke;
         }
         private void checkLoss()
         {
-        	if(fallDist>=15)
+        	if(fallDist>=15||hitObstacle())
         	{
         		animation=false;
         		first=true;
@@ -397,6 +402,20 @@ import javax.swing.KeyStroke;
         		repeat=true;
         	}
         	return platform;
+        }
+        private boolean hitObstacle()
+        {
+        	ImageObserver paintingChild = null;
+            boolean obstacle=false;
+        	for(int i=0; i<obstacleX.size()&&obstacle==false; i++)
+        	{
+        		if(xPos>=obstacleX.get(i)-obstacleW-200&&xPos<=obstacleX.get(i)+200&&yPos>=obstacleY.get(i)-obstacleH-200&&yPos<=obstacleY.get(i)+200)
+        		{
+        			obstacle=true;
+        		}
+        	}
+        	System.out.println(obstacle);
+        	return obstacle;
         }
     	public void moveRight() 
     	{	
